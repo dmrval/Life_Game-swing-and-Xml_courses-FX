@@ -1,8 +1,5 @@
 package logic;
 
-import java.awt.*;
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.Random;
 
 public class GameBoard {
@@ -52,7 +49,7 @@ public class GameBoard {
     }
 
 
-    public void forLive() {
+    private void forLive() {
         changeState();
     }
 
@@ -107,7 +104,7 @@ public class GameBoard {
         }
     }
 
-    public void forDie() {
+    private void forDie() {
         changeState();
     }
 

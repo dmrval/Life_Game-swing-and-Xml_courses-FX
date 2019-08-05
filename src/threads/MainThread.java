@@ -3,11 +3,11 @@ package threads;
 import logic.GameBoard;
 
 public class MainThread implements Runnable {
-    static GameBoard gameBoard;
-    Thread thread;
-    BornThread bornThread;
-    DiedThread diedThread;
-    Frame frame;
+    private static GameBoard gameBoard;
+    private Thread thread;
+    private BornThread bornThread;
+    private DiedThread diedThread;
+    private Frame frame;
 
     public MainThread() {
         gameBoard = new GameBoard();

@@ -1,6 +1,5 @@
 package logic;
 
-import javax.swing.*;
 import java.awt.*;
 
 public class Cell {
@@ -12,17 +11,17 @@ public class Cell {
     private boolean nextRound;
     private boolean isAlive;
 
-    public Cell(int x, int y, boolean alive) {
+    Cell(int x, int y, boolean alive) {
         this.x = x;
         this.y = y;
         this.isAlive = alive;
     }
 
-    public void setNextRound(boolean nextRound) {
+    void setNextRound(boolean nextRound) {
         this.nextRound = nextRound;
     }
 
-    public void update() {
+    void update() {
         isAlive = nextRound;
     }
 

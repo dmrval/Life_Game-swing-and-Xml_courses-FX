@@ -3,10 +3,10 @@ package threads;
 import logic.GameBoard;
 
 public class DiedThread implements Runnable {
-    GameBoard gameBoard;
-    Thread diedThread;
+    private GameBoard gameBoard;
+    private Thread diedThread;
 
-    public DiedThread(GameBoard gameBoard) {
+    DiedThread(GameBoard gameBoard) {
         this.gameBoard = gameBoard;
         diedThread = new Thread(this, "Died");
         diedThread.start();

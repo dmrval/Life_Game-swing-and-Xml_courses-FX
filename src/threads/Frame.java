@@ -8,11 +8,11 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Frame extends JFrame implements Runnable {
-    GameBoard gameBoard;
-    protected Thread frame;
+    private GameBoard gameBoard;
+    private Thread frame;
     private Screen screen;
 
-    public Frame(GameBoard gameBoard) {
+    Frame(GameBoard gameBoard) {
         this.gameBoard = gameBoard;
         frame = new Thread(this, "Graphic");
         setLayout(new BorderLayout());
@@ -34,8 +34,8 @@ public class Frame extends JFrame implements Runnable {
         }
     }
 
-    public class Screen extends JLabel {
-        public Screen() {
+    private class Screen extends JLabel {
+        private Screen() {
             addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
@@ -61,8 +61,6 @@ public class Frame extends JFrame implements Runnable {
                 }
             }
         }
-
-
     }
 
 

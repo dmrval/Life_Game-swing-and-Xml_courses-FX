@@ -4,8 +4,8 @@ package threads;
 import logic.GameBoard;
 
 public class BornThread implements Runnable {
-    GameBoard gameBoard;
-    Thread bornThread;
+    private GameBoard gameBoard;
+    private Thread bornThread;
 
     public BornThread(GameBoard gameBoard) {
         this.gameBoard = gameBoard;
