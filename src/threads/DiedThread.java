@@ -5,6 +5,7 @@ import logic.GameBoard;
 public class DiedThread implements Runnable {
     private GameBoard gameBoard;
     private Thread diedThread;
+    boolean suspendFlag = true;
 
     DiedThread(GameBoard gameBoard) {
         this.gameBoard = gameBoard;
@@ -15,8 +16,16 @@ public class DiedThread implements Runnable {
     @Override
     public void run() {
         while (true) {
+            synchronized (this) {
+                while (suspendFlag) {
+                    try {
+                        wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
             System.out.println(Thread.currentThread());
-
             gameBoard.die();
             try {
                 Thread.sleep(80);
@@ -26,7 +35,19 @@ public class DiedThread implements Runnable {
         }
     }
 
-    public Thread getDiedThread() {
+
+    void mySuspend() {
+        suspendFlag = true;
+    }
+    synchronized void myResume() {
+        suspendFlag = false;
+        notify();
+    }
+
+
+
+
+    public Thread getThread() {
         return diedThread;
     }
 }

@@ -12,6 +12,7 @@ public class Frame extends JFrame implements Runnable {
     private Thread frame;
     private Screen screen;
     private MainThread mainThread;
+    private boolean suspendFlag = true;
 
     Frame(GameBoard gameBoard, MainThread mainThread) {
         this.mainThread = mainThread;
@@ -55,9 +56,27 @@ public class Frame extends JFrame implements Runnable {
 
     }
 
+    void mySuspend() {
+        suspendFlag = true;
+    }
+
+    synchronized void myResume() {
+        suspendFlag = false;
+        notify();
+    }
+
     @Override
     public void run() {
         while (true) {
+            synchronized (this) {
+                while (suspendFlag) {
+                    try {
+                        wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
             repaint();
         }
     }
@@ -77,6 +96,7 @@ public class Frame extends JFrame implements Runnable {
                     } else {
                         gameBoard.getCells()[x][y].setAlive(true);
                     }
+                    repaint();
                 }
             });
         }
@@ -91,27 +111,28 @@ public class Frame extends JFrame implements Runnable {
         }
     }
 
-
     private class StartButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             boolean newGame = gameBoard.chechLiveOnBoard();
             if (newGame) {
-                gameBoard = new GameBoard();
+                gameBoard.setRandomLive();
+                repaint();
+                mainThread.getDiedThread().myResume();
+                mainThread.getBornThread().myResume();
             }
-            mainThread.setBornThread(new BornThread(gameBoard));
-            mainThread.setDiedThread(new DiedThread(gameBoard));
-
+            mainThread.getDiedThread().myResume();
+            mainThread.getBornThread().myResume();
+            mainThread.getFrame().myResume();
         }
     }
 
     private class StopButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-            mainThread.getBornThread().getBornThread().stop();
-            mainThread.getBornThread().getBornThread().interrupt();
-            mainThread.getDiedThread().getDiedThread().stop();
-            mainThread.getDiedThread().getDiedThread().interrupt();
+            mainThread.getDiedThread().mySuspend();
+            mainThread.getBornThread().mySuspend();
+            mainThread.getFrame().mySuspend();
         }
     }
 
@@ -123,6 +144,11 @@ public class Frame extends JFrame implements Runnable {
                     current.setAlive(false);
                 }
             }
+            repaint();
         }
+    }
+
+    public void setFrame(Thread frame) {
+        this.frame = frame;
     }
 }

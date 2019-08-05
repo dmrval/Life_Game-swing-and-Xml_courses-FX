@@ -1,7 +1,5 @@
 package logic;
 
-import javafx.scene.control.skin.CellSkinBase;
-
 import java.util.Random;
 
 public class GameBoard {
@@ -22,7 +20,6 @@ public class GameBoard {
             }
         }
     }
-
 
     public synchronized void die() {
         while (born) {
@@ -131,5 +128,15 @@ public class GameBoard {
 
     public int getHeight() {
         return height;
+    }
+
+
+    public void setRandomLive() {
+        Random random = new Random();
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                cells[x][y] = new Cell(x, y, random.nextBoolean());
+            }
+        }
     }
 }

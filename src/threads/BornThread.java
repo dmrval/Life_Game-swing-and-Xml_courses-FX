@@ -6,6 +6,7 @@ import logic.GameBoard;
 public class BornThread implements Runnable {
     private GameBoard gameBoard;
     private Thread bornThread;
+    boolean suspendFlag = true;
 
     BornThread(GameBoard gameBoard) {
         this.gameBoard = gameBoard;
@@ -17,7 +18,15 @@ public class BornThread implements Runnable {
     @Override
     public void run() {
         while (true) {
-            System.out.println(Thread.currentThread());
+            synchronized (this) {
+                while (suspendFlag) {
+                    try {
+                        wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
             gameBoard.live();
             try {
                 Thread.sleep(80);
@@ -27,7 +36,17 @@ public class BornThread implements Runnable {
         }
     }
 
-    public Thread getBornThread() {
+    void mySuspend() {
+        suspendFlag = true;
+    }
+
+    synchronized void myResume() {
+        suspendFlag = false;
+        notify();
+    }
+
+
+    public Thread getThread() {
         return bornThread;
     }
 }
