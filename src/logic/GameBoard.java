@@ -9,8 +9,8 @@ public class GameBoard {
     static boolean born = true;
 
     public GameBoard() {
-        width = 100;
-        height = 100;
+        width = 70;
+        height = 70;
         cells = new Cell[width][height];
 
         Random random = new Random();
@@ -20,7 +20,6 @@ public class GameBoard {
             }
         }
     }
-
 
     public synchronized void die() {
         while (born) {
@@ -47,7 +46,6 @@ public class GameBoard {
         born = !born;
         notify();
     }
-
 
     private void forLive() {
         changeState();
@@ -108,6 +106,17 @@ public class GameBoard {
         changeState();
     }
 
+    public boolean chechLiveOnBoard() {
+        for (Cell[] celArr : getCells()) {
+            for (Cell current : celArr) {
+                if (current.isAlive()) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
 
     public Cell[][] getCells() {
         return cells;
@@ -119,5 +128,15 @@ public class GameBoard {
 
     public int getHeight() {
         return height;
+    }
+
+
+    public void setRandomLive() {
+        Random random = new Random();
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                cells[x][y] = new Cell(x, y, random.nextBoolean());
+            }
+        }
     }
 }

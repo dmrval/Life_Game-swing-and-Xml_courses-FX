@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         MainThread mainThread = new MainThread();
         try {
-            mainThread.getThread().join();
+            mainThread.getMainThread().join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
