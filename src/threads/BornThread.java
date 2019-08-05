@@ -7,7 +7,7 @@ public class BornThread implements Runnable {
     private GameBoard gameBoard;
     private Thread bornThread;
 
-    public BornThread(GameBoard gameBoard) {
+    BornThread(GameBoard gameBoard) {
         this.gameBoard = gameBoard;
         bornThread = new Thread(this, "Born");
         bornThread.start();
@@ -17,14 +17,17 @@ public class BornThread implements Runnable {
     @Override
     public void run() {
         while (true) {
-            gameBoard.live();
             System.out.println(Thread.currentThread());
-
+            gameBoard.live();
             try {
                 Thread.sleep(80);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
+    }
+
+    public Thread getBornThread() {
+        return bornThread;
     }
 }

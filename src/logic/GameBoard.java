@@ -1,5 +1,7 @@
 package logic;
 
+import javafx.scene.control.skin.CellSkinBase;
+
 import java.util.Random;
 
 public class GameBoard {
@@ -9,8 +11,8 @@ public class GameBoard {
     static boolean born = true;
 
     public GameBoard() {
-        width = 100;
-        height = 100;
+        width = 70;
+        height = 70;
         cells = new Cell[width][height];
 
         Random random = new Random();
@@ -47,7 +49,6 @@ public class GameBoard {
         born = !born;
         notify();
     }
-
 
     private void forLive() {
         changeState();
@@ -106,6 +107,17 @@ public class GameBoard {
 
     private void forDie() {
         changeState();
+    }
+
+    public boolean chechLiveOnBoard() {
+        for (Cell[] celArr : getCells()) {
+            for (Cell current : celArr) {
+                if (current.isAlive()) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
 

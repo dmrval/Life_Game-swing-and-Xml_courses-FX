@@ -15,14 +15,18 @@ public class DiedThread implements Runnable {
     @Override
     public void run() {
         while (true) {
-            gameBoard.die();
             System.out.println(Thread.currentThread());
+
+            gameBoard.die();
             try {
                 Thread.sleep(80);
-
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
+    }
+
+    public Thread getDiedThread() {
+        return diedThread;
     }
 }
