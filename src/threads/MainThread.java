@@ -6,8 +6,8 @@ import logic.GameBoard;
 public class MainThread implements Runnable {
     static GameBoard gameBoard;
     private Thread mainThread;
-    public static BornThread bornThread;
-     public static DiedThread diedThread;
+    private static BornThread bornThread;
+    private static DiedThread diedThread;
     private Frame frame;
 
     public MainThread() {

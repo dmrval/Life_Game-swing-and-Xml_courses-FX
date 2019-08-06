@@ -11,16 +11,16 @@ public class Frame extends JFrame implements Runnable {
     private Thread frame;
     private Screen screen;
     private MainThread mainThread;
-    private Label labelWidth;
-    private Label labelHeight;
     JTextArea widthTextField;
     JTextArea heightTextField;
-    JTextArea timeTextField;
+    private JTextArea timeTextField;
+    private JTextArea ageTextField;
     private boolean suspendFlag = true;
     private Button startButton;
-    Button stopButton;
+    private Button stopButton;
     private Button clearButton;
     private Timer timer;
+    static int ageCount;
 
     Frame(MainThread mainThread) {
         this.mainThread = mainThread;
@@ -40,7 +40,7 @@ public class Frame extends JFrame implements Runnable {
 
         startButton = new Button();
         startButton.setSize(50, 50);
-        startButton.setLabel("Start");
+        startButton.setLabel("   Start   ");
         startButton.addActionListener(new StartButtonListener(this));
         jPanelButtons.add(startButton);
 
@@ -74,7 +74,7 @@ public class Frame extends JFrame implements Runnable {
         timeTextField.setText("5");
         jPanel.add(timeTextField);
 
-        labelWidth = new Label();
+        Label labelWidth = new Label();
         labelWidth.setText("Width(70-200 cell)");
 
         jPanel.add(labelWidth);
@@ -83,7 +83,7 @@ public class Frame extends JFrame implements Runnable {
         widthTextField.setText(Configuration.w + "");
         jPanel.add(widthTextField);
 
-        labelHeight = new Label();
+        Label labelHeight = new Label();
         labelHeight.setText("Height(20-200 cell)");
         jPanel.add(labelHeight);
 
@@ -95,6 +95,16 @@ public class Frame extends JFrame implements Runnable {
         advanced.setBackground(Color.GRAY);
 
         upPanel.add(advanced, BorderLayout.NORTH);
+
+
+        Label labelAge = new Label();
+        labelAge.setText("Age");
+
+        advanced.add(labelAge);
+
+        ageTextField = new JTextArea(1, 10);
+        advanced.add(ageTextField);
+
         jPanel.setSize(50, 50);
         Checkbox checkbox = new Checkbox("Expand?");
         advanced.add(checkbox);
@@ -110,11 +120,11 @@ public class Frame extends JFrame implements Runnable {
         frame.start();
     }
 
-    void mySuspend() {
+    private void mySuspend() {
         suspendFlag = true;
     }
 
-    synchronized void myResume() {
+    private synchronized void myResume() {
         suspendFlag = false;
         notify();
     }
@@ -151,7 +161,6 @@ public class Frame extends JFrame implements Runnable {
                         MainThread.gameBoard.getCells()[x][y].setAlive(true);
                     }
                     repaint();
-                    System.out.println(Configuration.w + " " + Configuration.h);
                 }
             });
         }
@@ -169,7 +178,7 @@ public class Frame extends JFrame implements Runnable {
     private class StartButtonListener implements ActionListener {
         Frame frame;
 
-        public StartButtonListener(Frame frame) {
+        StartButtonListener(Frame frame) {
             this.frame = frame;
         }
 
@@ -191,7 +200,7 @@ public class Frame extends JFrame implements Runnable {
                 clearButton.setEnabled(false);
                 if (!MainThread.gameBoard.chechLiveOnBoard()) {
                     setConfiguration();
-                    MainThread.gameBoard.setNewSizeBoardRandom();
+                    MainThread.gameBoard.setNewSizeBoardRandomLive();
                     frame.setSize(Configuration.w * Cell.SIZE, Configuration.h * Cell.SIZE);
                     MainThread.gameBoard.setRandomLive();
                 } else {
@@ -205,7 +214,7 @@ public class Frame extends JFrame implements Runnable {
                 clearButton.setEnabled(false);
                 if (!MainThread.gameBoard.chechLiveOnBoard()) {
                     setDefaultConfiguration();
-                    MainThread.gameBoard.setNewSizeBoardRandom();
+                    MainThread.gameBoard.setNewSizeBoardRandomLive();
                     frame.setSize(Configuration.w * Cell.SIZE, Configuration.h * Cell.SIZE);
                     MainThread.gameBoard.setRandomLive();
                 } else {
@@ -216,12 +225,20 @@ public class Frame extends JFrame implements Runnable {
             }
         }
 
-        public void setConfiguration() {
+        void setConfiguration() {
             Configuration.w = Integer.parseInt(widthTextField.getText());
             Configuration.h = Integer.parseInt(heightTextField.getText());
+            if (Configuration.w < 70 || Configuration.w > 200) {
+                widthTextField.setText("70");
+                Configuration.w = 70;
+            }
+            if (Configuration.h < 20 || Configuration.h > 200) {
+                heightTextField.setText("70");
+                Configuration.h = 70;
+            }
         }
 
-        public void setDefaultConfiguration() {
+        void setDefaultConfiguration() {
             Configuration.w = 70;
             Configuration.h = 70;
             widthTextField.setText("70");
@@ -235,7 +252,7 @@ public class Frame extends JFrame implements Runnable {
             timer.stop();
             timeTextField.setText("5");
             suspendThreads();
-            startButton.setLabel("Start");
+            startButton.setLabel("   Start   ");
             startButton.setEnabled(true);
             clearButton.setEnabled(true);
         }
@@ -264,13 +281,13 @@ public class Frame extends JFrame implements Runnable {
         return true;
     }
 
-    void resumeThreads() {
+    private void resumeThreads() {
         mainThread.getDiedThread().myResume();
         mainThread.getBornThread().myResume();
         mainThread.getFrame().myResume();
     }
 
-    void suspendThreads() {
+    private void suspendThreads() {
         mainThread.getDiedThread().mySuspend();
         mainThread.getBornThread().mySuspend();
         mainThread.getFrame().mySuspend();
@@ -280,7 +297,7 @@ public class Frame extends JFrame implements Runnable {
     private class TimerTick implements ActionListener {
         int countdown;
 
-        public TimerTick(int countdown) {
+        TimerTick(int countdown) {
             this.countdown = countdown;
         }
 
@@ -289,7 +306,7 @@ public class Frame extends JFrame implements Runnable {
             if (countdown == 0) {
                 timer.stop();
                 suspendThreads();
-                startButton.setLabel("Start");
+                startButton.setLabel("   Start   ");
                 startButton.setEnabled(true);
                 clearButton.setEnabled(true);
                 timeTextField.setText("5");
@@ -301,7 +318,7 @@ public class Frame extends JFrame implements Runnable {
             if (countdown == 0) {
                 timer.stop();
                 suspendThreads();
-                startButton.setLabel("Start");
+                startButton.setLabel("   Start   ");
                 startButton.setEnabled(true);
                 clearButton.setEnabled(true);
                 timeTextField.setText("5");

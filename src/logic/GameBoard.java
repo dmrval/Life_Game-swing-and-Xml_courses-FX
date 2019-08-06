@@ -4,8 +4,9 @@ package logic;
 import java.util.Random;
 
 public class GameBoard {
-    Cell[][] cells;
-    static boolean born = true;
+    private Cell[][] cells;
+    private static boolean born = true;
+
 
     public GameBoard() {
         cells = new Cell[Configuration.maxW][Configuration.maxH];
@@ -113,7 +114,7 @@ public class GameBoard {
         return false;
     }
 
-    public void setNewSizeBoardRandom() {
+    public void setNewSizeBoardRandomLive() {
         Cell[][] newCells = new Cell[Configuration.maxW][Configuration.maxH];
         Random random = new Random();
         for (int x = 0; x < Configuration.maxW; x++) {
