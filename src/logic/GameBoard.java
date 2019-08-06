@@ -1,22 +1,18 @@
 package logic;
 
+
 import java.util.Random;
 
 public class GameBoard {
-    private Cell[][] cells;
-    private int width;
-    private int height;
+    Cell[][] cells;
     static boolean born = true;
 
     public GameBoard() {
-        width = 70;
-        height = 70;
-        cells = new Cell[width][height];
+        cells = new Cell[Configuration.maxW][Configuration.maxH];
 
-        Random random = new Random();
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
-                cells[x][y] = new Cell(x, y, random.nextBoolean());
+        for (int x = 0; x < Configuration.maxW; x++) {
+            for (int y = 0; y < Configuration.maxH; y++) {
+                cells[x][y] = new Cell(x, y, false);
             }
         }
     }
@@ -52,14 +48,14 @@ public class GameBoard {
     }
 
     private void changeState() {
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
+        for (int x = 0; x < Configuration.maxW; x++) {
+            for (int y = 0; y < Configuration.maxH; y++) {
                 int mx = x - 1;
-                if (mx < 0) mx = width - 1;
+                if (mx < 0) mx = Configuration.maxW - 1;
                 int my = y - 1;
-                if (my < 0) my = height - 1;
-                int gx = (x + 1) % width;
-                int gy = (y + 1) % height;
+                if (my < 0) my = Configuration.maxH - 1;
+                int gx = (x + 1) % Configuration.maxW;
+                int gy = (y + 1) % Configuration.maxH;
                 int neighbor = 0;
                 if (cells[mx][my].isAlive()) {
                     neighbor++;
@@ -95,8 +91,8 @@ public class GameBoard {
             }
         }
 
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
+        for (int x = 0; x < Configuration.maxW; x++) {
+            for (int y = 0; y < Configuration.maxH; y++) {
                 cells[x][y].update();
             }
         }
@@ -110,33 +106,38 @@ public class GameBoard {
         for (Cell[] celArr : getCells()) {
             for (Cell current : celArr) {
                 if (current.isAlive()) {
-                    return false;
+                    return true;
                 }
             }
         }
-        return true;
+        return false;
     }
 
+    public void setNewSizeBoardRandom() {
+        Cell[][] newCells = new Cell[Configuration.maxW][Configuration.maxH];
+        Random random = new Random();
+        for (int x = 0; x < Configuration.maxW; x++) {
+            for (int y = 0; y < Configuration.maxH; y++) {
+                newCells[x][y] = new Cell(x, y, random.nextBoolean());
+            }
+        }
+        cells = newCells;
+    }
 
     public Cell[][] getCells() {
         return cells;
     }
 
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-
     public void setRandomLive() {
         Random random = new Random();
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
+        for (int x = 0; x < Configuration.maxW; x++) {
+            for (int y = 0; y < Configuration.maxH; y++) {
                 cells[x][y] = new Cell(x, y, random.nextBoolean());
             }
         }
+    }
+
+    public void setCells(Cell[][] cells) {
+        this.cells = cells;
     }
 }
