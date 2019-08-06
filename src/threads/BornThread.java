@@ -1,15 +1,11 @@
 package threads;
 
 
-import logic.GameBoard;
-
 public class BornThread implements Runnable {
-    private GameBoard gameBoard;
     private Thread bornThread;
     boolean suspendFlag = true;
 
-    BornThread(GameBoard gameBoard) {
-        this.gameBoard = gameBoard;
+    BornThread() {
         bornThread = new Thread(this, "Born");
         bornThread.start();
 
@@ -27,7 +23,7 @@ public class BornThread implements Runnable {
                     }
                 }
             }
-            gameBoard.live();
+            MainThread.gameBoard.live();
             try {
                 Thread.sleep(80);
             } catch (InterruptedException e) {
@@ -36,17 +32,13 @@ public class BornThread implements Runnable {
         }
     }
 
-    void mySuspend() {
+    public void mySuspend() {
         suspendFlag = true;
     }
 
-    synchronized void myResume() {
+    public synchronized void myResume() {
         suspendFlag = false;
         notify();
     }
 
-
-    public Thread getThread() {
-        return bornThread;
-    }
 }

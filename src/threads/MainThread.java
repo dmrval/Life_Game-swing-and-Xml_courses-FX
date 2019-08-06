@@ -1,16 +1,19 @@
 package threads;
 
+import logic.Configuration;
 import logic.GameBoard;
-
 
 public class MainThread implements Runnable {
     static GameBoard gameBoard;
     private Thread mainThread;
-    private BornThread bornThread;
-    private DiedThread diedThread;
+    public static BornThread bornThread;
+     public static DiedThread diedThread;
     private Frame frame;
 
     public MainThread() {
+        frame = new Frame(this);
+        Configuration.w = Integer.parseInt(frame.widthTextField.getText());
+        Configuration.h = Integer.parseInt(frame.heightTextField.getText());
         gameBoard = new GameBoard();
         mainThread = new Thread(this, "Optional");
         mainThread.start();
@@ -18,9 +21,8 @@ public class MainThread implements Runnable {
 
     @Override
     public void run() {
-        frame = new Frame(gameBoard, this);
-        bornThread = new BornThread(gameBoard);
-        diedThread = new DiedThread(gameBoard);
+        bornThread = new BornThread();
+        diedThread = new DiedThread();
     }
 
     public Frame getFrame() {
@@ -47,5 +49,7 @@ public class MainThread implements Runnable {
     public void setDiedThread(DiedThread diedThread) {
         this.diedThread = diedThread;
     }
+
+
 }
 

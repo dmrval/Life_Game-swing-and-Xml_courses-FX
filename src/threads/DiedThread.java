@@ -1,14 +1,11 @@
 package threads;
 
-import logic.GameBoard;
 
 public class DiedThread implements Runnable {
-    private GameBoard gameBoard;
     private Thread diedThread;
-    boolean suspendFlag = true;
+    private boolean suspendFlag = true;
 
-    DiedThread(GameBoard gameBoard) {
-        this.gameBoard = gameBoard;
+    DiedThread() {
         diedThread = new Thread(this, "Died");
         diedThread.start();
     }
@@ -25,8 +22,7 @@ public class DiedThread implements Runnable {
                     }
                 }
             }
-            System.out.println(Thread.currentThread());
-            gameBoard.die();
+            MainThread.gameBoard.die();
             try {
                 Thread.sleep(80);
             } catch (InterruptedException e) {
@@ -36,18 +32,15 @@ public class DiedThread implements Runnable {
     }
 
 
-    void mySuspend() {
+    public void mySuspend() {
         suspendFlag = true;
     }
-    synchronized void myResume() {
+
+    public synchronized void myResume() {
         suspendFlag = false;
         notify();
     }
 
 
 
-
-    public Thread getThread() {
-        return diedThread;
-    }
 }
