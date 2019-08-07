@@ -20,7 +20,7 @@ public class Frame extends JFrame implements Runnable {
     private Button stopButton;
     private Button clearButton;
     private Timer timer;
-    static int ageCount;
+    private int ageCount = -1;
 
     Frame(MainThread mainThread) {
         this.mainThread = mainThread;
@@ -30,7 +30,6 @@ public class Frame extends JFrame implements Runnable {
         setLayout(new BorderLayout());
         screen = new Screen();
         add(screen, BorderLayout.CENTER);
-
 
         JPanel jPanelButtons = new JPanel();
         jPanelButtons.setSize(50, 50);
@@ -96,19 +95,18 @@ public class Frame extends JFrame implements Runnable {
 
         upPanel.add(advanced, BorderLayout.NORTH);
 
-
         Label labelAge = new Label();
         labelAge.setText("Age");
 
         advanced.add(labelAge);
 
         ageTextField = new JTextArea(1, 10);
+        ageTextField.setText("1000");
         advanced.add(ageTextField);
 
         jPanel.setSize(50, 50);
         Checkbox checkbox = new Checkbox("Expand?");
         advanced.add(checkbox);
-
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         pack();
@@ -141,7 +139,13 @@ public class Frame extends JFrame implements Runnable {
                     }
                 }
             }
-            repaint();
+            if (ageCount != 0) {
+                repaint();
+            } else {
+                suspendThreads();
+            }
+            ageTextField.setText(ageCount+"");
+
         }
     }
 
@@ -184,6 +188,9 @@ public class Frame extends JFrame implements Runnable {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
+            if (inputCorrect(ageTextField.getText())) {
+                ageCount = Integer.parseInt(ageTextField.getText());
+            }
             if (inputCorrect(timeTextField.getText())) {
                 timer = new Timer(1000, new TimerTick(Integer.parseInt(timeTextField.getText())));
                 timer.start();
@@ -195,9 +202,7 @@ public class Frame extends JFrame implements Runnable {
                 timer.start();
             }
             if (inputCorrect(widthTextField.getText()) && inputCorrect(heightTextField.getText())) {
-                startButton.setLabel("Running");
-                startButton.setEnabled(false);
-                clearButton.setEnabled(false);
+                startButtonActivity();
                 if (!MainThread.gameBoard.chechLiveOnBoard()) {
                     setConfiguration();
                     MainThread.gameBoard.setNewSizeBoardRandomLive();
@@ -209,9 +214,7 @@ public class Frame extends JFrame implements Runnable {
                 }
                 resumeThreads();
             } else {
-                startButton.setLabel("Running");
-                startButton.setEnabled(false);
-                clearButton.setEnabled(false);
+                startButtonActivity();
                 if (!MainThread.gameBoard.chechLiveOnBoard()) {
                     setDefaultConfiguration();
                     MainThread.gameBoard.setNewSizeBoardRandomLive();
@@ -250,13 +253,9 @@ public class Frame extends JFrame implements Runnable {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             timer.stop();
-            timeTextField.setText("5");
             suspendThreads();
-            startButton.setLabel("   Start   ");
-            startButton.setEnabled(true);
-            clearButton.setEnabled(true);
+            stopButtonActivity();
         }
-
     }
 
     private class ClearButtonListener implements ActionListener {
@@ -270,7 +269,6 @@ public class Frame extends JFrame implements Runnable {
             repaint();
         }
     }
-
 
     private boolean inputCorrect(String input) {
         try {
@@ -306,23 +304,31 @@ public class Frame extends JFrame implements Runnable {
             if (countdown == 0) {
                 timer.stop();
                 suspendThreads();
-                startButton.setLabel("   Start   ");
-                startButton.setEnabled(true);
-                clearButton.setEnabled(true);
+                stopButtonActivity();
                 timeTextField.setText("5");
                 return;
-
             }
             countdown--;
             timeTextField.setText(String.valueOf(countdown));
-            if (countdown == 0) {
-                timer.stop();
-                suspendThreads();
-                startButton.setLabel("   Start   ");
-                startButton.setEnabled(true);
-                clearButton.setEnabled(true);
-                timeTextField.setText("5");
-            }
         }
     }
+
+
+    private void stopButtonActivity() {
+        startButton.setLabel("   Start   ");
+        startButton.setEnabled(true);
+        clearButton.setEnabled(true);
+    }
+
+    private void startButtonActivity() {
+        startButton.setLabel("Running");
+        startButton.setEnabled(false);
+        clearButton.setEnabled(false);
+    }
+
+    public void minusAge() {
+        ageCount--;
+    }
+
+
 }

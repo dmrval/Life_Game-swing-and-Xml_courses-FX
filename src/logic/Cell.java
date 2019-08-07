@@ -11,7 +11,7 @@ public class Cell {
     private boolean nextRound;
     private boolean isAlive;
 
-    public Cell(int x, int y, boolean alive) {
+    Cell(int x, int y, boolean alive) {
         this.x = x;
         this.y = y;
         this.isAlive = alive;

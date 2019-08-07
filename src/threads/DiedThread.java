@@ -2,11 +2,10 @@ package threads;
 
 
 public class DiedThread implements Runnable {
-    private Thread diedThread;
     private boolean suspendFlag = true;
 
     DiedThread() {
-        diedThread = new Thread(this, "Died");
+        Thread diedThread = new Thread(this, "Died");
         diedThread.start();
     }
 
@@ -32,11 +31,11 @@ public class DiedThread implements Runnable {
     }
 
 
-    public void mySuspend() {
+    void mySuspend() {
         suspendFlag = true;
     }
 
-    public synchronized void myResume() {
+    synchronized void myResume() {
         suspendFlag = false;
         notify();
     }

@@ -14,7 +14,7 @@ public class MainThread implements Runnable {
         frame = new Frame(this);
         Configuration.w = Integer.parseInt(frame.widthTextField.getText());
         Configuration.h = Integer.parseInt(frame.heightTextField.getText());
-        gameBoard = new GameBoard();
+        gameBoard = new GameBoard(frame);
         mainThread = new Thread(this, "Optional");
         mainThread.start();
     }
@@ -25,7 +25,7 @@ public class MainThread implements Runnable {
         diedThread = new DiedThread();
     }
 
-    public Frame getFrame() {
+    Frame getFrame() {
         return frame;
     }
 
@@ -34,22 +34,13 @@ public class MainThread implements Runnable {
         return mainThread;
     }
 
-    public BornThread getBornThread() {
+    BornThread getBornThread() {
         return bornThread;
     }
 
-    public DiedThread getDiedThread() {
+    DiedThread getDiedThread() {
         return diedThread;
     }
-
-    public void setBornThread(BornThread bornThread) {
-        this.bornThread = bornThread;
-    }
-
-    public void setDiedThread(DiedThread diedThread) {
-        this.diedThread = diedThread;
-    }
-
 
 }
 
