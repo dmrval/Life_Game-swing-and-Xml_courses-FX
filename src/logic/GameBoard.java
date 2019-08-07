@@ -1,15 +1,19 @@
 package logic;
 
 
+import threads.Frame;
+
 import java.util.Random;
 
 public class GameBoard {
-    Cell[][] cells;
-    static boolean born = true;
+    private Cell[][] cells;
+    private static boolean born = true;
+    private Frame frame;
 
-    public GameBoard() {
+
+    public GameBoard(Frame f) {
+        frame = f;
         cells = new Cell[Configuration.maxW][Configuration.maxH];
-
         for (int x = 0; x < Configuration.maxW; x++) {
             for (int y = 0; y < Configuration.maxH; y++) {
                 cells[x][y] = new Cell(x, y, false);
@@ -90,12 +94,12 @@ public class GameBoard {
                 }
             }
         }
-
         for (int x = 0; x < Configuration.maxW; x++) {
             for (int y = 0; y < Configuration.maxH; y++) {
                 cells[x][y].update();
             }
         }
+        frame.minusAge();
     }
 
     private void forDie() {
@@ -113,7 +117,7 @@ public class GameBoard {
         return false;
     }
 
-    public void setNewSizeBoardRandom() {
+    public void setNewSizeBoardRandomLive() {
         Cell[][] newCells = new Cell[Configuration.maxW][Configuration.maxH];
         Random random = new Random();
         for (int x = 0; x < Configuration.maxW; x++) {
@@ -137,7 +141,4 @@ public class GameBoard {
         }
     }
 
-    public void setCells(Cell[][] cells) {
-        this.cells = cells;
-    }
 }

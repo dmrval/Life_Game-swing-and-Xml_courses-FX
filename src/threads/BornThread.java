@@ -2,11 +2,10 @@ package threads;
 
 
 public class BornThread implements Runnable {
-    private Thread bornThread;
-    boolean suspendFlag = true;
+    private boolean suspendFlag = true;
 
     BornThread() {
-        bornThread = new Thread(this, "Born");
+        Thread bornThread = new Thread(this, "Born");
         bornThread.start();
 
     }
@@ -32,11 +31,11 @@ public class BornThread implements Runnable {
         }
     }
 
-    public void mySuspend() {
+    void mySuspend() {
         suspendFlag = true;
     }
 
-    public synchronized void myResume() {
+    synchronized void myResume() {
         suspendFlag = false;
         notify();
     }
