@@ -46,6 +46,7 @@ public class Frame extends JFrame implements Runnable {
         stopButton = new Button();
         stopButton.setSize(50, 50);
         stopButton.setLabel("Stop");
+        stopButton.setEnabled(false);
         stopButton.addActionListener(new StopButtonListener());
         jPanelButtons.add(stopButton);
 
@@ -144,7 +145,7 @@ public class Frame extends JFrame implements Runnable {
             } else {
                 suspendThreads();
             }
-            ageTextField.setText(ageCount+"");
+            ageTextField.setText(ageCount + "");
 
         }
     }
@@ -188,64 +189,58 @@ public class Frame extends JFrame implements Runnable {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-            if (inputCorrect(ageTextField.getText())) {
-                ageCount = Integer.parseInt(ageTextField.getText());
+            ageResult();
+            timeResult();
+            startButtonActivity();
+            if (!MainThread.gameBoard.chechLiveOnBoard()) {
+                setConfiguration();
+                MainThread.gameBoard.setNewSizeBoardRandomLive();
+                frame.setSize(Configuration.w * Cell.SIZE, Configuration.h * Cell.SIZE);
+                MainThread.gameBoard.setRandomLive();
+            } else {
+                setConfiguration();
+                frame.setSize(Configuration.w * Cell.SIZE, Configuration.h * Cell.SIZE);
             }
-            if (inputCorrect(timeTextField.getText())) {
-                timer = new Timer(1000, new TimerTick(Integer.parseInt(timeTextField.getText())));
+            resumeThreads();
+        }
+
+        private void timeResult() {
+            String time = timeTextField.getText();
+            if (inputCorrect(time)) {
+                timer = new Timer(1000, new TimerTick(Integer.parseInt(time)));
                 timer.start();
-            } else if (timeTextField.getText().isEmpty() || timeTextField.getText().equals("0")) {
+            } else if (time.isEmpty() || time.equals("0")) {
                 timer = new Timer(1000, new TimerTick(999));
 
             } else {
                 timer = new Timer(1000, new TimerTick(5));
                 timer.start();
             }
+        }
+
+        private void ageResult() {
+            String age = ageTextField.getText();
+            if (inputCorrect(age)) {
+                ageCount = Integer.parseInt(age);
+            }
+        }
+
+        private void setConfiguration() {
             if (inputCorrect(widthTextField.getText()) && inputCorrect(heightTextField.getText())) {
-                startButtonActivity();
-                if (!MainThread.gameBoard.chechLiveOnBoard()) {
-                    setConfiguration();
-                    MainThread.gameBoard.setNewSizeBoardRandomLive();
-                    frame.setSize(Configuration.w * Cell.SIZE, Configuration.h * Cell.SIZE);
-                    MainThread.gameBoard.setRandomLive();
-                } else {
-                    setConfiguration();
-                    frame.setSize(Configuration.w * Cell.SIZE, Configuration.h * Cell.SIZE);
+                Configuration.w = Integer.parseInt(widthTextField.getText());
+                Configuration.h = Integer.parseInt(heightTextField.getText());
+                if (Configuration.w < 70 || Configuration.w > 200) {
+                    widthTextField.setText("70");
+                    Configuration.w = 70;
                 }
-                resumeThreads();
+                if (Configuration.h < 20 || Configuration.h > 200) {
+                    heightTextField.setText("70");
+                    Configuration.h = 70;
+                }
             } else {
-                startButtonActivity();
-                if (!MainThread.gameBoard.chechLiveOnBoard()) {
-                    setDefaultConfiguration();
-                    MainThread.gameBoard.setNewSizeBoardRandomLive();
-                    frame.setSize(Configuration.w * Cell.SIZE, Configuration.h * Cell.SIZE);
-                    MainThread.gameBoard.setRandomLive();
-                } else {
-                    setDefaultConfiguration();
-                    frame.setSize(Configuration.w * Cell.SIZE, Configuration.h * Cell.SIZE);
-                }
-                resumeThreads();
-            }
-        }
-
-        void setConfiguration() {
-            Configuration.w = Integer.parseInt(widthTextField.getText());
-            Configuration.h = Integer.parseInt(heightTextField.getText());
-            if (Configuration.w < 70 || Configuration.w > 200) {
                 widthTextField.setText("70");
-                Configuration.w = 70;
-            }
-            if (Configuration.h < 20 || Configuration.h > 200) {
                 heightTextField.setText("70");
-                Configuration.h = 70;
             }
-        }
-
-        void setDefaultConfiguration() {
-            Configuration.w = 70;
-            Configuration.h = 70;
-            widthTextField.setText("70");
-            heightTextField.setText("70");
         }
     }
 
@@ -317,11 +312,13 @@ public class Frame extends JFrame implements Runnable {
     private void stopButtonActivity() {
         startButton.setLabel("   Start   ");
         startButton.setEnabled(true);
+        stopButton.setEnabled(false);
         clearButton.setEnabled(true);
     }
 
     private void startButtonActivity() {
         startButton.setLabel("Running");
+        stopButton.setEnabled(true);
         startButton.setEnabled(false);
         clearButton.setEnabled(false);
     }
