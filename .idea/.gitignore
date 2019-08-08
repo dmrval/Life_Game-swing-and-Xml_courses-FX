@@ -2,4 +2,6 @@
 /workspace.xml
 *.iml
 .idea
-out
+out/
+misc.xml
+.idea/
