@@ -7,7 +7,6 @@ public class BornThread implements Runnable {
     BornThread() {
         Thread bornThread = new Thread(this, "Born");
         bornThread.start();
-
     }
 
     @Override

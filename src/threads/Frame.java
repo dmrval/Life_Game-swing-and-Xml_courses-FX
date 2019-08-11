@@ -265,11 +265,14 @@ public class Frame extends JFrame implements Runnable {
         }
     }
 
-    private boolean inputCorrect(String input) {
-        try {
-            Integer.parseInt(input);
-        } catch (NumberFormatException e) {
+    private boolean inputCorrect(String s) {
+        if (s.isEmpty()) {
             return false;
+        }
+        for (int i = 0; i < s.length(); i++) {
+            if (!Character.isDigit(s.charAt(i))) {
+                return false;
+            }
         }
         return true;
     }
