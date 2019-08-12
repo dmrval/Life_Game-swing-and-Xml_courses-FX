@@ -36,7 +36,6 @@ public class Cell {
         } else {
             g.setColor(Color.pink);
             g.fillRect(x * SIZE, y * SIZE, SIZE, SIZE);
-
         }
     }
 

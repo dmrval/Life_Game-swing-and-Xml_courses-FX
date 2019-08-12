@@ -1,6 +1,5 @@
 package threads;
 
-
 public class BornThread implements Runnable {
     private boolean suspendFlag = true;
 

@@ -1,6 +1,5 @@
 package threads;
 
-
 public class DiedThread implements Runnable {
     private boolean suspendFlag = true;
 

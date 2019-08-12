@@ -1,5 +1,6 @@
 package threads;
 
+
 import logic.Configuration;
 import logic.GameBoard;
 

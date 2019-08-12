@@ -1,6 +1,8 @@
 package logic;
 
 
+
+
 import threads.Frame;
 
 import java.util.Random;
@@ -106,7 +108,7 @@ public class GameBoard {
         changeState();
     }
 
-    public boolean chechLiveOnBoard() {
+    public boolean checkLiveOnBoard() {
         for (Cell[] celArr : getCells()) {
             for (Cell current : celArr) {
                 if (current.isAlive()) {
@@ -141,4 +143,7 @@ public class GameBoard {
         }
     }
 
+    public void setCells(Cell[][] cells) {
+        this.cells = cells;
+    }
 }

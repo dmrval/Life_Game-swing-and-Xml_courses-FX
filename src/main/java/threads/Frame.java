@@ -192,7 +192,7 @@ public class Frame extends JFrame implements Runnable {
             ageResult();
             timeResult();
             startButtonActivity();
-            if (!MainThread.gameBoard.chechLiveOnBoard()) {
+            if (!MainThread.gameBoard.checkLiveOnBoard()) {
                 setConfiguration();
                 MainThread.gameBoard.setNewSizeBoardRandomLive();
                 frame.setSize(Configuration.w * Cell.SIZE, Configuration.h * Cell.SIZE);
