@@ -1,22 +1,31 @@
 package logic;
 
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 import threads.Frame;
 import threads.MainThread;
 
 
-import java.util.Random;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.*;
 
+@RunWith(MockitoJUnitRunner.class)
 class GameBoardTest {
 
-
-    @Mock
     GameBoard gameBoard;
 
+    GameBoardTest() {
+        setUp();
+    }
+
+    @Before
+    public void setUp() {
+        gameBoard = new GameBoard(new Frame(new MainThread()));
+    }
 
     @Test
     void die() {
@@ -28,52 +37,23 @@ class GameBoardTest {
 
     @Test
     void checkLiveOnBoard() {
-        GameBoard tmp = new GameBoard(mock(Frame.class));
-        Cell[][] cells = new Cell[Configuration.maxW][Configuration.maxH];
-        Random random = new Random();
-        for (int x = 0; x < Configuration.maxW; x++) {
-            for (int y = 0; y < Configuration.maxH; y++) {
-                cells[x][y] = new Cell(x, y, random.nextBoolean());
-            }
-        }
-        tmp.setCells(cells);
-        assertEquals(tmp.checkLiveOnBoard(), true || false);
+        assertEquals(gameBoard.checkLiveOnBoard(), anyBoolean());
     }
 
     @Test
     void setNewSizeBoardRandomLive() {
-        gameBoard = mock(GameBoard.class);
-        Cell[][] newCells = new Cell[Configuration.maxW][Configuration.maxH];
-        Random random = new Random();
-        for (int x = 0; x < Configuration.maxW; x++) {
-            for (int y = 0; y < Configuration.maxH; y++) {
-                newCells[x][y] = new Cell(x, y, random.nextBoolean());
-            }
-        }
-        assertNotNull(gameBoard);
-        when(gameBoard.getCells()).thenReturn(newCells);
+        gameBoard.setNewSizeBoardRandomLive();
+        assertNotNull(gameBoard.getCells());
     }
 
     @Test
     void getCells() {
-        Frame frame = mock(Frame.class);
-        MainThread mainThread = mock(MainThread.class);
-        gameBoard = new GameBoard(frame);
         assertNotNull(gameBoard.getCells());
     }
 
     @Test
     void setRandomLive() {
-        gameBoard = mock(GameBoard.class);
-        Cell[][] newCells = new Cell[Configuration.maxW][Configuration.maxH];
-        gameBoard.setCells(newCells);
-        verify(gameBoard).setCells(newCells);
-        Random random = new Random();
-        for (int x = 0; x < Configuration.maxW; x++) {
-            for (int y = 0; y < Configuration.maxH; y++) {
-                newCells[x][y] = new Cell(x, y, random.nextBoolean());
-            }
-        }
-        when(gameBoard.getCells()).thenReturn(newCells);
+        gameBoard.setRandomLive();
+        assertNotNull(gameBoard.getCells());
     }
 }

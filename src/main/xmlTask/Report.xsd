@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="STRINGS" type="xs:negativeInteger"/>
+
+    <xs:element name="University" type="UniversityType"/>
+    <xs:complexType name="TaskNameType">
+        <xs:simpleContent>
+            <xs:extension base="StringValid">
+                <xs:attribute type="xs:positiveInteger" name="hours" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="TaskType" mixed="true">
+        <xs:sequence>
+            <xs:element type="TaskNameType" name="TaskName" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute type="StringValid" name="hours" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="TasksType">
+        <xs:sequence>
+            <xs:element type="TaskType" name="Task" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CourseType">
+        <xs:sequence>
+            <xs:element name="CourceName">
+            </xs:element>
+            <xs:element type="StringValid" name="CourceAuthor"/>
+            <xs:element name="CourceCreationDate">
+            </xs:element>
+            <xs:element type="TasksType" name="Tasks"/>
+        </xs:sequence>
+        <xs:attribute type="xs:positiveInteger" name="id" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="CoursesType">
+        <xs:sequence>
+            <xs:element type="CourseType" name="Course" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ProgramType">
+        <xs:sequence>
+            <xs:element name="ProgName">
+            </xs:element>
+            <xs:element name="ProgAuthor">
+
+            </xs:element>
+            <xs:element type="StringValid" name="ProgCreationDate"/>
+            <xs:element type="CoursesType" name="Courses"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="StudentType">
+        <xs:sequence>
+            <xs:element type="StringValid" name="Fullname"/>
+            <xs:element type="StringValid" name="City"/>
+            <xs:element type="EmailType" name="Email"/>
+            <xs:element type="StringValid" name="TrainingStartDate"/>
+            <xs:element type="StringValid" name="SignedAcontract"/>
+            <xs:element type="ProgramType" name="Program"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="StudentsType">
+        <xs:sequence>
+            <xs:element type="StudentType" name="Student" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="UniversityType">
+        <xs:sequence>
+            <xs:element type="StudentsType" name="Students"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="StringValid">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="70"/>
+            <xs:minLength value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="EmailType" >
+        <xs:restriction base="xs:token">
+            <xs:pattern value="([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(([a-zA-Z0-9_-])*\.([a-zA-Z0-9_-])+)+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+
+
+
+</xs:schema>

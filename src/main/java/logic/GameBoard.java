@@ -1,8 +1,6 @@
 package logic;
 
 
-
-
 import threads.Frame;
 
 import java.util.Random;
@@ -143,7 +141,4 @@ public class GameBoard {
         }
     }
 
-    public void setCells(Cell[][] cells) {
-        this.cells = cells;
-    }
 }

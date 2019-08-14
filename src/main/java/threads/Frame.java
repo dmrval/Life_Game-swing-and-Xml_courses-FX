@@ -22,7 +22,7 @@ public class Frame extends JFrame implements Runnable {
     private Timer timer;
     private int ageCount = -1;
 
-    Frame(MainThread mainThread) {
+    public Frame(MainThread mainThread) {
         this.mainThread = mainThread;
         frame = new Thread(this, "Graphic");
         setName("Game Form");
