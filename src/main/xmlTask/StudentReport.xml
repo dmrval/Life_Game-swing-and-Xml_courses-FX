@@ -24,7 +24,7 @@
                 <Task hours="4">
                     <TaskName>Overview of Eclipse IDE</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
                 </Task>
             </Course>
             <Course id="2">
@@ -35,12 +35,12 @@
                 <Task hours="12">
                     <TaskName>Learning the Java Language Basics</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
                 </Task>
                 <Task hours="4">
                     <TaskName>Practical Task</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
                 </Task>
             </Course>
             <Course id="3">
@@ -52,12 +52,12 @@
 
                     <TaskName>Learning the Java Language advanced features</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
                 </Task>
                 <Task hours="16">
                     <TaskName>Practical Task</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
 
                 </Task>
             </Course>
@@ -69,13 +69,13 @@
                 <Task hours="6">
                     <TaskName>Learning XML Language</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
 
                 </Task>
                 <Task hours="8">
                     <TaskName>Practical Task</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
 
                 </Task>
             </Course>
@@ -86,13 +86,13 @@
                 <Task hours="14">
                     <TaskName>Learning XSLT and XPath Basics</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
 
                 </Task>
                 <Task hours="8">
                     <TaskName>Equipment Stylesheets</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
                 </Task>
             </Course>
             <Course id="6">
@@ -102,19 +102,19 @@
                 <Task hours="8">
                     <TaskName>Struts Framework Fundamentals</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
 
                 </Task>
                 <Task hours="40">
                     <TaskName>Struts Framework Task</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
 
                 </Task>
                 <Task hours="20">
                     <TaskName>Java Message Service Task</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
 
                 </Task>
             </Course>
@@ -125,19 +125,19 @@
                 <Task hours="3">
                     <TaskName>Mastering Microsoft Project</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
 
                 </Task>
                 <Task hours="8">
                     <TaskName>MS Project Practical Task</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
 
                 </Task>
                 <Task hours="12">
                     <TaskName>Software development process. Development team and its structure</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
 
                 </Task>
             </Course>
@@ -148,7 +148,7 @@
                 <Task hours="80">
                     <TaskName>Software development process. Development team and its structure</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
 
                 </Task>
             </Course>
@@ -175,7 +175,7 @@
                 <Task hours="4">
                     <TaskName>Overview of Eclipse IDE</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
                 </Task>
             </Course>
             <Course id="2">
@@ -185,12 +185,12 @@
                 <Task hours="12">
                     <TaskName>Learning the Java Language Basics</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
                 </Task>
                 <Task hours="4">
                     <TaskName>Practical Task</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
                 </Task>
             </Course>
             <Course id="3">
@@ -200,12 +200,12 @@
                 <Task hours="17">
                     <TaskName>Learning the Java Language advanced features</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
                 </Task>
                 <Task hours="16">
                     <TaskName>Practical Task</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
                 </Task>
             </Course>
             <Course id="4">
@@ -215,12 +215,12 @@
                 <Task hours="6">
                     <TaskName>Learning XML Language</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
                 </Task>
                 <Task hours="8">
                     <TaskName>Practical Task</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
                 </Task>
             </Course>
             <Course id="5">
@@ -230,12 +230,12 @@
                 <Task hours="14">
                     <TaskName>Learning XSLT and XPath Basics</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
                 </Task>
                 <Task hours="8">
                     <TaskName>Equipment Stylesheets</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
                 </Task>
             </Course>
             <Course id="6">
@@ -245,17 +245,17 @@
                 <Task hours="8">
                     <TaskName>Struts Framework Fundamentals</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
                 </Task>
                 <Task hours="40">
                     <TaskName>Struts Framework Task</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
                 </Task>
                 <Task hours="20">
                     <TaskName>Java Message Service Task</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
                 </Task>
             </Course>
             <Course id="7">
@@ -265,17 +265,17 @@
                 <Task hours="3">
                     <TaskName>Mastering Microsoft Project</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
                 </Task>
                 <Task hours="8">
                     <TaskName>MS Project Practical Task</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
                 </Task>
                 <Task hours="12">
                     <TaskName>Software development process. Development team and its structure</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
                 </Task>
             </Course>
             <Course id="8">
@@ -285,7 +285,7 @@
                 <Task hours="80">
                     <TaskName>Software development process. Development team and its structure</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
                 </Task>
             </Course>
         </Program>
@@ -311,12 +311,12 @@
                 <Task hours="6">
                     <TaskName>Learning XML Language</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
                 </Task>
                 <Task hours="8">
                     <TaskName>Practical Task</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
                 </Task>
             </Course>
             <Course id="5">
@@ -326,12 +326,12 @@
                 <Task hours="14">
                     <TaskName>Learning XSLT and XPath Basics</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
                 </Task>
                 <Task hours="8">
                     <TaskName>Equipment Stylesheets</TaskName>
                     <Assessment></Assessment>
-                    <Status></Status>
+                    
                 </Task>
             </Course>
         </Program>
@@ -350,40 +350,36 @@
                 <CourceName>Overview of Eclipse IDE of Eclipse IDE 4</CourceName>
                 <CourceAuthor></CourceAuthor>
                 <CourceCreationDate>12.12.2015</CourceCreationDate>
-                <Task hours="4" task-type="Theory">
+                <Task hours="4" >
                     <TaskName>Overview of Eclipse IDE</TaskName>
                     <Assessment>3</Assessment>
-                    <Status>-21</Status>
                 </Task>
             </Course>
             <Course id="2">
                 <CourceName>Основы языка Java</CourceName>
                 <CourceAuthor></CourceAuthor>
                 <CourceCreationDate>12.12.2015</CourceCreationDate>
-                <Task hours="12">
+                <Task hours="12" Practical="задание принято">
                     <TaskName>Learning the Java Language Basics</TaskName>
                     <Assessment>3</Assessment>
-                    <Status></Status>
                 </Task>
-                <Task hours="4">
+                <Task hours="4" Theory="в процессе изучения">
                     <TaskName>Practical Task</TaskName>
-                    <Assessment>2</Assessment>
-                    <Status></Status>
+                    <Assessment></Assessment>
                 </Task>
             </Course>
             <Course id="3">
                 <CourceName>Язык Java - расширенные возможности</CourceName>
                 <CourceAuthor></CourceAuthor>
                 <CourceCreationDate>12.12.2015</CourceCreationDate>
-                <Task hours="17" task-type="Practical">
+                <Task hours="17" Practical="находится на проверке">
                     <TaskName>Learning the Java Language advanced features</TaskName>
                     <Assessment>3</Assessment>
-                    <Status></Status>
+                    
                 </Task>
-                <Task hours="16">
+                <Task hours="16" Theory="изучение завершено">
                     <TaskName>Practical Task</TaskName>
                     <Assessment>4</Assessment>
-                    <Status></Status>
                 </Task>
             </Course>
             <Course id="7">
@@ -393,27 +389,23 @@
                 <Task hours="3">
                     <TaskName>Mastering Microsoft Project</TaskName>
                     <Assessment>5</Assessment>
-                    <Status></Status>
                 </Task>
-                <Task hours="8">
+                <Task hours="8" Practical="задание принято">
                     <TaskName>MS Project Practical Task</TaskName>
                     <Assessment>3</Assessment>
-                    <Status></Status>
                 </Task>
-                <Task hours="12">
+                <Task hours="12" Theory="изучение не началось">
                     <TaskName>Software development process. Development team and its structure</TaskName>
                     <Assessment>3</Assessment>
-                    <Status></Status>
                 </Task>
             </Course>
             <Course id="8">
                 <CourceName>Процесс разработки программного обеспечения</CourceName>
                 <CourceAuthor></CourceAuthor>
                 <CourceCreationDate>12.12.2015</CourceCreationDate>
-                <Task hours="80" task-type="Theory">
+                <Task hours="80" Practical="задание принято">
                     <TaskName>Software development process. Development team and its structure</TaskName>
                     <Assessment>3</Assessment>
-                    <Status>AAA</Status>
                 </Task>
             </Course>
         </Program>

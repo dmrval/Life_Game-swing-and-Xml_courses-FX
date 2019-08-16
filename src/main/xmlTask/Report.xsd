@@ -2,21 +2,6 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:mstns="http://www.w3.org/2001/XMLSchema-instance">
 
-    <xs:simpleType name="allowed-task-types">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="Theory"/>
-            <xs:enumeration value="Practical"/>
-        </xs:restriction>
-    </xs:simpleType>
-
-
-    <xs:simpleType name="Theory">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="AAA"/>
-            <xs:enumeration value="BBB"/>
-        </xs:restriction>
-    </xs:simpleType>
-
     <xs:element name="University">
         <xs:complexType>
             <xs:sequence>
@@ -48,18 +33,9 @@
                                                                 </xs:element>
                                                                 <xs:element name="Assessment" type="type_assesment"
                                                                             nillable="true"/>
-
-
-
-                                                                <xs:element name="Status" type="xs:string">
-
-                                                                </xs:element>
-
-
-
                                                             </xs:sequence>
                                                             <xs:attribute type="xs:positiveInteger" name="hours"/>
-                                                            <xs:attribute name="task-type" type="allowed-task-types"/>
+                                                            <xs:attributeGroup ref="allowed-task-types"/>
                                                         </xs:complexType>
                                                     </xs:element>
                                                 </xs:sequence>
@@ -84,8 +60,34 @@
         </xs:complexType>
     </xs:element>
 
+
+    <xs:attributeGroup name="allowed-task-types">
+        <xs:attribute name="Theory" type="theoryStatus"/>
+        <xs:attribute name="Practical" type="practicalStatus"/>
+    </xs:attributeGroup>
+
+
+    <xs:simpleType name="theoryStatus">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="изучение не началось"/>
+            <xs:enumeration value="в процессе изучения"/>
+            <xs:enumeration value="изучение завершено"/>
+
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="practicalStatus">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="выполнение не началось"/>
+            <xs:enumeration value="в процессе выполнения"/>
+            <xs:enumeration value="находится на проверке"/>
+            <xs:enumeration value="задание принято"/>
+        </xs:restriction>
+    </xs:simpleType>
+
     <xs:simpleType name="type_assesment">
         <xs:restriction base="xs:string">
+            <xs:enumeration value="0"/>
             <xs:enumeration value="1"/>
             <xs:enumeration value="2"/>
             <xs:enumeration value="3"/>
