@@ -15,7 +15,6 @@ import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 class GameBoardTest {
-
     GameBoard gameBoard;
 
     GameBoardTest() {

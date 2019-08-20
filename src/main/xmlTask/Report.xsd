@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:mstns="http://www.w3.org/2001/XMLSchema-instance">
-
     <xs:element name="University">
         <xs:complexType>
             <xs:sequence>
@@ -12,39 +11,55 @@
                             <xs:element type="StringValid" name="City"/>
                             <xs:element type="Email" name="Email"/>
                             <xs:element type="DateFormat" name="TrainingStartDate"/>
-                            <xs:element type="StringValid" name="SignedAcontract"/>
+                            <xs:element type="xs:boolean" name="SignedAcontract"/>
                             <xs:element name="Program">
                                 <xs:complexType>
                                     <xs:sequence>
                                         <xs:element name="ProgName"/>
                                         <xs:element name="ProgAuthor"/>
                                         <xs:element type="DateFormat" name="ProgCreationDate"/>
-                                        <xs:element name="Course" maxOccurs="unbounded">
+                                        <xs:element name="Courses" maxOccurs="unbounded">
                                             <xs:complexType>
                                                 <xs:sequence>
-                                                    <xs:element name="CourceName" type="enumTypeCource">
-                                                    </xs:element>
-                                                    <xs:element type="StringValid" name="CourceAuthor"/>
-                                                    <xs:element name="CourceCreationDate" type="DateFormat"/>
-                                                    <xs:element name="Task" maxOccurs="unbounded">
+                                                    <xs:element name="Course" maxOccurs="unbounded">
                                                         <xs:complexType>
                                                             <xs:sequence>
-                                                                <xs:element name="TaskName" type="enumTypeTask">
+                                                                <xs:element name="CourceName" type="enumTypeCource">
                                                                 </xs:element>
-                                                                <xs:element name="Assessment" type="type_assesment"
-                                                                            nillable="true"/>
+                                                                <xs:element type="StringValid" name="CourceAuthor"/>
+                                                                <xs:element name="CourceCreationDate"
+                                                                            type="DateFormat"/>
+                                                                <xs:element name="Tasks">
+                                                                    <xs:complexType>
+                                                                        <xs:sequence>
+                                                                <xs:element name="Task" maxOccurs="unbounded">
+                                                                    <xs:complexType>
+                                                                        <xs:sequence>
+                                                                            <xs:element name="TaskName"
+                                                                                        type="enumTypeTask">
+                                                                            </xs:element>
+                                                                            <xs:element name="Assessment"
+                                                                                        type="type_assesment"
+                                                                                        nillable="true"/>
+                                                                        </xs:sequence>
+                                                                        <xs:attribute type="xs:positiveInteger"
+                                                                                      name="hours"/>
+                                                                        <xs:attributeGroup ref="allowed-task-types"/>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                                        </xs:sequence>
+                                                                    </xs:complexType>
+                                                                </xs:element>
                                                             </xs:sequence>
-                                                            <xs:attribute type="xs:positiveInteger" name="hours"/>
-                                                            <xs:attributeGroup ref="allowed-task-types"/>
+                                                            <xs:attribute type="xs:positiveInteger" name="id"/>
                                                         </xs:complexType>
+                                                        <xs:unique name="uniqueTask">
+                                                            <xs:selector xpath="./*"/>
+                                                            <xs:field xpath="TaskName"/>
+                                                        </xs:unique>
                                                     </xs:element>
                                                 </xs:sequence>
-                                                <xs:attribute type="xs:positiveInteger" name="id"/>
                                             </xs:complexType>
-                                            <xs:unique name="uniqueTask">
-                                                <xs:selector xpath="./*"/>
-                                                <xs:field xpath="TaskName"/>
-                                            </xs:unique>
                                         </xs:element>
                                     </xs:sequence>
                                 </xs:complexType>
@@ -60,19 +75,16 @@
         </xs:complexType>
     </xs:element>
 
-
     <xs:attributeGroup name="allowed-task-types">
         <xs:attribute name="Theory" type="theoryStatus"/>
         <xs:attribute name="Practical" type="practicalStatus"/>
     </xs:attributeGroup>
-
 
     <xs:simpleType name="theoryStatus">
         <xs:restriction base="xs:string">
             <xs:enumeration value="изучение не началось"/>
             <xs:enumeration value="в процессе изучения"/>
             <xs:enumeration value="изучение завершено"/>
-
         </xs:restriction>
     </xs:simpleType>
 
@@ -96,6 +108,7 @@
             <xs:enumeration value=""/>
         </xs:restriction>
     </xs:simpleType>
+
     <xs:simpleType name="enumTypeCource">
         <xs:restriction base="xs:string">
             <xs:enumeration value="Основы языка Java"/>
@@ -108,6 +121,7 @@
             <xs:enumeration value="Технология Struts Framework"/>
         </xs:restriction>
     </xs:simpleType>
+
     <xs:simpleType name="enumTypeTask">
         <xs:restriction base="xs:string">
             <xs:enumeration value="Software development process. Development team and its structure"/>
@@ -133,16 +147,19 @@
             <xs:minLength value="0"/>
         </xs:restriction>
     </xs:simpleType>
+
     <xs:simpleType name="Email">
         <xs:restriction base="xs:string">
             <xs:pattern value="([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(([a-zA-Z0-9_-])*\.([a-zA-Z0-9_-])+)+"/>
         </xs:restriction>
     </xs:simpleType>
+
     <xs:simpleType name="DateFormat">
         <xs:restriction base="xs:string">
             <xs:pattern value="[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{4}"/>
         </xs:restriction>
     </xs:simpleType>
+
 
 
 </xs:schema>

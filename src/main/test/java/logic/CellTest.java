@@ -43,13 +43,6 @@ class CellTest {
     }
 
 
-//    @Test
-//    void setAliveTrue() {
-//        Cell cell = new Cell(1, 1, true);
-//        assertTrue(cell.isAlive());
-//    }
-
-
     @Test
     void setAliveFalse() {
         Cell cell = mock(Cell.class);

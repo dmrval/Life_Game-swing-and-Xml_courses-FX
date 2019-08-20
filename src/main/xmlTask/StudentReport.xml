@@ -2,338 +2,317 @@
 <University xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
             xs:noNamespaceSchemaLocation="Report.xsd">
     <Student>
-        <FullName>
-            Alexander Sergeev
-
-        </FullName>
-
-        <City></City>
+        <FullName>Alexander Sergeev</FullName>
+        <City>Saratov</City>
         <Email>AlexanderSergeev@gmai.com</Email>
         <TrainingStartDate>12.12.2015</TrainingStartDate>
-        <SignedAcontract></SignedAcontract>
+        <SignedAcontract>true</SignedAcontract>
         <Program>
-            <ProgName>
-                Полная программа
-            </ProgName>
-            <ProgAuthor></ProgAuthor>
+            <ProgName>Полная программа</ProgName>
+            <ProgAuthor>Иван</ProgAuthor>
             <ProgCreationDate>12.12.2015</ProgCreationDate>
-            <Course id="1">
-                <CourceName>Overview of Eclipse IDE of Eclipse IDE 4</CourceName>
-                <CourceAuthor></CourceAuthor>
-                <CourceCreationDate>12.12.2015</CourceCreationDate>
-                <Task hours="4">
-                    <TaskName>Overview of Eclipse IDE</TaskName>
-                    <Assessment></Assessment>
-                    
-                </Task>
-            </Course>
-            <Course id="2">
-                <CourceName>Основы языка Java</CourceName>
-                <CourceAuthor></CourceAuthor>
-                <CourceCreationDate>12.12.2015</CourceCreationDate>
-
-                <Task hours="12">
-                    <TaskName>Learning the Java Language Basics</TaskName>
-                    <Assessment></Assessment>
-                    
-                </Task>
-                <Task hours="4">
-                    <TaskName>Practical Task</TaskName>
-                    <Assessment></Assessment>
-                    
-                </Task>
-            </Course>
-            <Course id="3">
-                <CourceName>Язык Java - расширенные возможности</CourceName>
-                <CourceAuthor></CourceAuthor>
-                <CourceCreationDate>12.12.2015</CourceCreationDate>
-
-                <Task hours="17">
-
-                    <TaskName>Learning the Java Language advanced features</TaskName>
-                    <Assessment></Assessment>
-                    
-                </Task>
-                <Task hours="16">
-                    <TaskName>Practical Task</TaskName>
-                    <Assessment></Assessment>
-                    
-
-                </Task>
-            </Course>
-            <Course id="4">
-                <CourceName>Язык XML</CourceName>
-                <CourceAuthor></CourceAuthor>
-                <CourceCreationDate>12.12.2015</CourceCreationDate>
-
-                <Task hours="6">
-                    <TaskName>Learning XML Language</TaskName>
-                    <Assessment></Assessment>
-                    
-
-                </Task>
-                <Task hours="8">
-                    <TaskName>Practical Task</TaskName>
-                    <Assessment></Assessment>
-                    
-
-                </Task>
-            </Course>
-            <Course id="5">
-                <CourceName>Язык XSLT и XPath</CourceName>
-                <CourceAuthor></CourceAuthor>
-                <CourceCreationDate>12.12.2015</CourceCreationDate>
-                <Task hours="14">
-                    <TaskName>Learning XSLT and XPath Basics</TaskName>
-                    <Assessment></Assessment>
-                    
-
-                </Task>
-                <Task hours="8">
-                    <TaskName>Equipment Stylesheets</TaskName>
-                    <Assessment></Assessment>
-                    
-                </Task>
-            </Course>
-            <Course id="6">
-                <CourceName>Технология Struts Framework</CourceName>
-                <CourceAuthor></CourceAuthor>
-                <CourceCreationDate>12.12.2015</CourceCreationDate>
-                <Task hours="8">
-                    <TaskName>Struts Framework Fundamentals</TaskName>
-                    <Assessment></Assessment>
-                    
-
-                </Task>
-                <Task hours="40">
-                    <TaskName>Struts Framework Task</TaskName>
-                    <Assessment></Assessment>
-                    
-
-                </Task>
-                <Task hours="20">
-                    <TaskName>Java Message Service Task</TaskName>
-                    <Assessment></Assessment>
-                    
-
-                </Task>
-            </Course>
-            <Course id="7">
-                <CourceName>Процесс производства программного обеспечения</CourceName>
-                <CourceAuthor></CourceAuthor>
-                <CourceCreationDate>12.12.2015</CourceCreationDate>
-                <Task hours="3">
-                    <TaskName>Mastering Microsoft Project</TaskName>
-                    <Assessment></Assessment>
-                    
-
-                </Task>
-                <Task hours="8">
-                    <TaskName>MS Project Practical Task</TaskName>
-                    <Assessment></Assessment>
-                    
-
-                </Task>
-                <Task hours="12">
-                    <TaskName>Software development process. Development team and its structure</TaskName>
-                    <Assessment></Assessment>
-                    
-
-                </Task>
-            </Course>
-            <Course id="8">
-                <CourceName>Процесс разработки программного обеспечения</CourceName>
-                <CourceAuthor></CourceAuthor>
-                <CourceCreationDate>12.12.2015</CourceCreationDate>
-                <Task hours="80">
-                    <TaskName>Software development process. Development team and its structure</TaskName>
-                    <Assessment></Assessment>
-                    
-
-                </Task>
-            </Course>
+            <Courses>
+                <Course id="1">
+                    <CourceName>Overview of Eclipse IDE of Eclipse IDE 4</CourceName>
+                    <CourceAuthor></CourceAuthor>
+                    <CourceCreationDate>12.12.2015</CourceCreationDate>
+                    <Tasks>
+                        <Task hours="4" Practical="в процессе выполнения">
+                            <TaskName>Overview of Eclipse IDE</TaskName>
+                            <Assessment>5</Assessment>
+                        </Task>
+                    </Tasks>
+                </Course>
+                <Course id="2">
+                    <CourceName>Основы языка Java</CourceName>
+                    <CourceAuthor></CourceAuthor>
+                    <CourceCreationDate>12.12.2015</CourceCreationDate>
+                    <Tasks>
+                        <Task hours="12" Practical="выполнение не началось">
+                            <TaskName>Learning the Java Language Basics</TaskName>
+                            <Assessment></Assessment>
+                        </Task>
+                        <Task hours="4" Theory="изучение завершено">
+                            <TaskName>Practical Task</TaskName>
+                            <Assessment>3</Assessment>
+                        </Task>
+                    </Tasks>
+                </Course>
+                <Course id="3">
+                    <CourceName>Язык Java - расширенные возможности</CourceName>
+                    <CourceAuthor></CourceAuthor>
+                    <CourceCreationDate>12.12.2015</CourceCreationDate>
+                    <Tasks>
+                        <Task hours="17">
+                            <TaskName>Learning the Java Language advanced features</TaskName>
+                            <Assessment></Assessment>
+                        </Task>
+                        <Task hours="16">
+                            <TaskName>Practical Task</TaskName>
+                            <Assessment></Assessment>
+                        </Task>
+                    </Tasks>
+                </Course>
+                <Course id="4">
+                    <CourceName>Язык XML</CourceName>
+                    <CourceAuthor></CourceAuthor>
+                    <CourceCreationDate>12.12.2015</CourceCreationDate>
+                    <Tasks>
+                        <Task hours="6">
+                            <TaskName>Learning XML Language</TaskName>
+                            <Assessment></Assessment>
+                        </Task>
+                        <Task hours="8">
+                            <TaskName>Practical Task</TaskName>
+                            <Assessment></Assessment>
+                        </Task>
+                    </Tasks>
+                </Course>
+                <Course id="5">
+                    <CourceName>Язык XSLT и XPath</CourceName>
+                    <CourceAuthor></CourceAuthor>
+                    <CourceCreationDate>12.12.2015</CourceCreationDate>
+                    <Tasks>
+                        <Task hours="14" Theory="изучение завершено">
+                            <TaskName>Learning XSLT and XPath Basics</TaskName>
+                            <Assessment></Assessment>
+                        </Task>
+                        <Task hours="8">
+                            <TaskName>Equipment Stylesheets</TaskName>
+                            <Assessment></Assessment>
+                        </Task>
+                    </Tasks>
+                </Course>
+                <Course id="6">
+                    <CourceName>Технология Struts Framework</CourceName>
+                    <CourceAuthor></CourceAuthor>
+                    <CourceCreationDate>12.12.2015</CourceCreationDate>
+                    <Tasks>
+                        <Task hours="8">
+                            <TaskName>Struts Framework Fundamentals</TaskName>
+                            <Assessment></Assessment>
+                        </Task>
+                        <Task hours="40">
+                            <TaskName>Struts Framework Task</TaskName>
+                            <Assessment></Assessment>
+                        </Task>
+                        <Task hours="20">
+                            <TaskName>Java Message Service Task</TaskName>
+                            <Assessment></Assessment>
+                        </Task>
+                    </Tasks>
+                </Course>
+                <Course id="7">
+                    <CourceName>Процесс производства программного обеспечения</CourceName>
+                    <CourceAuthor></CourceAuthor>
+                    <CourceCreationDate>12.12.2015</CourceCreationDate>
+                    <Tasks>
+                        <Task hours="3" Practical="в процессе выполнения">
+                            <TaskName>Mastering Microsoft Project</TaskName>
+                            <Assessment></Assessment>
+                        </Task>
+                        <Task hours="8">
+                            <TaskName>MS Project Practical Task</TaskName>
+                            <Assessment></Assessment>
+                        </Task>
+                        <Task hours="12">
+                            <TaskName>Software development process. Development team and its structure</TaskName>
+                            <Assessment></Assessment>
+                        </Task>
+                    </Tasks>
+                </Course>
+                <Course id="8">
+                    <CourceName>Процесс разработки программного обеспечения</CourceName>
+                    <CourceAuthor></CourceAuthor>
+                    <CourceCreationDate>12.12.2015</CourceCreationDate>
+                    <Tasks>
+                        <Task hours="80">
+                            <TaskName>Software development process. Development team and its structure</TaskName>
+                            <Assessment></Assessment>
+                        </Task>
+                    </Tasks>
+                </Course>
+            </Courses>
         </Program>
     </Student>
     <Student>
-        <FullName>
-            Boris Romanov
-        </FullName>
+        <FullName>Boris Romanov</FullName>
         <City></City>
         <Email>BorisRomanov@gmail.com</Email>
         <TrainingStartDate>12.12.2015</TrainingStartDate>
-        <SignedAcontract></SignedAcontract>
+        <SignedAcontract>false</SignedAcontract>
         <Program>
-            <ProgName>
-                Полная программа
-            </ProgName>
+            <ProgName>Полная программа</ProgName>
             <ProgAuthor></ProgAuthor>
             <ProgCreationDate>12.12.2015</ProgCreationDate>
-            <Course id="1">
-                <CourceName>Overview of Eclipse IDE of Eclipse IDE 4</CourceName>
-                <CourceAuthor></CourceAuthor>
-                <CourceCreationDate>12.12.2015</CourceCreationDate>
-                <Task hours="4">
-                    <TaskName>Overview of Eclipse IDE</TaskName>
-                    <Assessment></Assessment>
-                    
-                </Task>
-            </Course>
-            <Course id="2">
-                <CourceName>Основы языка Java</CourceName>
-                <CourceAuthor></CourceAuthor>
-                <CourceCreationDate>12.12.2015</CourceCreationDate>
-                <Task hours="12">
-                    <TaskName>Learning the Java Language Basics</TaskName>
-                    <Assessment></Assessment>
-                    
-                </Task>
-                <Task hours="4">
-                    <TaskName>Practical Task</TaskName>
-                    <Assessment></Assessment>
-                    
-                </Task>
-            </Course>
-            <Course id="3">
-                <CourceName>Язык Java - расширенные возможности</CourceName>
-                <CourceAuthor></CourceAuthor>
-                <CourceCreationDate>12.12.2015</CourceCreationDate>
-                <Task hours="17">
-                    <TaskName>Learning the Java Language advanced features</TaskName>
-                    <Assessment></Assessment>
-                    
-                </Task>
-                <Task hours="16">
-                    <TaskName>Practical Task</TaskName>
-                    <Assessment></Assessment>
-                    
-                </Task>
-            </Course>
-            <Course id="4">
-                <CourceName>Язык XML</CourceName>
-                <CourceAuthor></CourceAuthor>
-                <CourceCreationDate>12.12.2015</CourceCreationDate>
-                <Task hours="6">
-                    <TaskName>Learning XML Language</TaskName>
-                    <Assessment></Assessment>
-                    
-                </Task>
-                <Task hours="8">
-                    <TaskName>Practical Task</TaskName>
-                    <Assessment></Assessment>
-                    
-                </Task>
-            </Course>
-            <Course id="5">
-                <CourceName>Язык XSLT и XPath</CourceName>
-                <CourceAuthor></CourceAuthor>
-                <CourceCreationDate>12.12.2015</CourceCreationDate>
-                <Task hours="14">
-                    <TaskName>Learning XSLT and XPath Basics</TaskName>
-                    <Assessment></Assessment>
-                    
-                </Task>
-                <Task hours="8">
-                    <TaskName>Equipment Stylesheets</TaskName>
-                    <Assessment></Assessment>
-                    
-                </Task>
-            </Course>
-            <Course id="6">
-                <CourceName>Технология Struts Framework</CourceName>
-                <CourceAuthor></CourceAuthor>
-                <CourceCreationDate>12.12.2015</CourceCreationDate>
-                <Task hours="8">
-                    <TaskName>Struts Framework Fundamentals</TaskName>
-                    <Assessment></Assessment>
-                    
-                </Task>
-                <Task hours="40">
-                    <TaskName>Struts Framework Task</TaskName>
-                    <Assessment></Assessment>
-                    
-                </Task>
-                <Task hours="20">
-                    <TaskName>Java Message Service Task</TaskName>
-                    <Assessment></Assessment>
-                    
-                </Task>
-            </Course>
-            <Course id="7">
-                <CourceName>Процесс производства программного обеспечения</CourceName>
-                <CourceAuthor></CourceAuthor>
-                <CourceCreationDate>12.12.2015</CourceCreationDate>
-                <Task hours="3">
-                    <TaskName>Mastering Microsoft Project</TaskName>
-                    <Assessment></Assessment>
-                    
-                </Task>
-                <Task hours="8">
-                    <TaskName>MS Project Practical Task</TaskName>
-                    <Assessment></Assessment>
-                    
-                </Task>
-                <Task hours="12">
-                    <TaskName>Software development process. Development team and its structure</TaskName>
-                    <Assessment></Assessment>
-                    
-                </Task>
-            </Course>
-            <Course id="8">
-                <CourceName>Процесс разработки программного обеспечения</CourceName>
-                <CourceAuthor></CourceAuthor>
-                <CourceCreationDate>12.12.2015</CourceCreationDate>
-                <Task hours="80">
-                    <TaskName>Software development process. Development team and its structure</TaskName>
-                    <Assessment></Assessment>
-                    
-                </Task>
-            </Course>
+            <Courses>
+                <Course id="1">
+                    <CourceName>Overview of Eclipse IDE of Eclipse IDE 4</CourceName>
+                    <CourceAuthor></CourceAuthor>
+                    <CourceCreationDate>12.12.2015</CourceCreationDate>
+                    <Tasks>
+                        <Task hours="4">
+                            <TaskName>Overview of Eclipse IDE</TaskName>
+                            <Assessment>4</Assessment>
+                        </Task>
+                    </Tasks>
+                </Course>
+                <Course id="2">
+                    <CourceName>Основы языка Java</CourceName>
+                    <CourceAuthor></CourceAuthor>
+                    <CourceCreationDate>12.12.2015</CourceCreationDate>
+                    <Tasks>
+                        <Task hours="12">
+                            <TaskName>Learning the Java Language Basics</TaskName>
+                            <Assessment>3</Assessment>
+                        </Task>
+                        <Task hours="4">
+                            <TaskName>Practical Task</TaskName>
+                            <Assessment>2</Assessment>
+                        </Task>
+                    </Tasks>
+                </Course>
+                <Course id="3">
+                    <CourceName>Язык Java - расширенные возможности</CourceName>
+                    <CourceAuthor></CourceAuthor>
+                    <CourceCreationDate>12.12.2015</CourceCreationDate>
+                    <Tasks>
+                        <Task hours="17">
+                            <TaskName>Learning the Java Language advanced features</TaskName>
+                            <Assessment></Assessment>
+                        </Task>
+                        <Task hours="16">
+                            <TaskName>Practical Task</TaskName>
+                            <Assessment></Assessment>
+                        </Task>
+                    </Tasks>
+                </Course>
+                <Course id="4">
+                    <CourceName>Язык XML</CourceName>
+                    <CourceAuthor></CourceAuthor>
+                    <CourceCreationDate>12.12.2015</CourceCreationDate>
+                    <Tasks>
+                        <Task hours="6">
+                            <TaskName>Learning XML Language</TaskName>
+                            <Assessment></Assessment>
+
+                        </Task>
+                        <Task hours="8" Practical="выполнение не началось">
+                            <TaskName>Practical Task</TaskName>
+                            <Assessment></Assessment>
+                        </Task>
+                    </Tasks>
+                </Course>
+                <Course id="5">
+                    <CourceName>Язык XSLT и XPath</CourceName>
+                    <CourceAuthor></CourceAuthor>
+                    <CourceCreationDate>12.12.2015</CourceCreationDate>
+                    <Tasks>
+                        <Task hours="14">
+                            <TaskName>Learning XSLT and XPath Basics</TaskName>
+                            <Assessment></Assessment>
+                        </Task>
+                        <Task hours="8" Practical="задание принято">
+                            <TaskName>Equipment Stylesheets</TaskName>
+                            <Assessment></Assessment>
+                        </Task>
+                    </Tasks>
+                </Course>
+                <Course id="6">
+                    <CourceName>Технология Struts Framework</CourceName>
+                    <CourceAuthor></CourceAuthor>
+                    <CourceCreationDate>12.12.2015</CourceCreationDate>
+                    <Tasks>
+                        <Task hours="8">
+                            <TaskName>Struts Framework Fundamentals</TaskName>
+                            <Assessment></Assessment>
+                        </Task>
+                        <Task hours="40">
+                            <TaskName>Struts Framework Task</TaskName>
+                            <Assessment></Assessment>
+                        </Task>
+                        <Task hours="20">
+                            <TaskName>Java Message Service Task</TaskName>
+                            <Assessment></Assessment>
+                        </Task>
+                    </Tasks>
+                </Course>
+                <Course id="7">
+                    <CourceName>Процесс производства программного обеспечения</CourceName>
+                    <CourceAuthor></CourceAuthor>
+                    <CourceCreationDate>12.12.2015</CourceCreationDate>
+                    <Tasks>
+                        <Task hours="3">
+                            <TaskName>Mastering Microsoft Project</TaskName>
+                            <Assessment></Assessment>
+                        </Task>
+                        <Task hours="8">
+                            <TaskName>MS Project Practical Task</TaskName>
+                            <Assessment></Assessment>
+                        </Task>
+                        <Task hours="12">
+                            <TaskName>Software development process. Development team and its structure</TaskName>
+                            <Assessment></Assessment>
+                        </Task>
+                    </Tasks>
+                </Course>
+                <Course id="8">
+                    <CourceName>Процесс разработки программного обеспечения</CourceName>
+                    <CourceAuthor></CourceAuthor>
+                    <CourceCreationDate>12.12.2015</CourceCreationDate>
+                    <Tasks>
+                        <Task hours="80">
+                            <TaskName>Software development process. Development team and its structure</TaskName>
+                            <Assessment></Assessment>
+                        </Task>
+                    </Tasks>
+                </Course>
+            </Courses>
         </Program>
     </Student>
     <Student>
-        <FullName>
-            Vadim Petrov
-        </FullName>
+        <FullName>Vadim Petrov</FullName>
         <City></City>
         <Email>VadimPetrov@gmail.com</Email>
         <TrainingStartDate>12.12.2015</TrainingStartDate>
-        <SignedAcontract></SignedAcontract>
+        <SignedAcontract>true</SignedAcontract>
         <Program>
-            <ProgName>
-                Специальная программа 1
-            </ProgName>
+            <ProgName>Специальная программа 1</ProgName>
             <ProgAuthor></ProgAuthor>
             <ProgCreationDate>12.12.2015</ProgCreationDate>
-            <Course id="4">
-                <CourceName>Язык XML</CourceName>
-                <CourceAuthor></CourceAuthor>
-                <CourceCreationDate>12.12.2015</CourceCreationDate>
-                <Task hours="6">
-                    <TaskName>Learning XML Language</TaskName>
-                    <Assessment></Assessment>
-                    
-                </Task>
-                <Task hours="8">
-                    <TaskName>Practical Task</TaskName>
-                    <Assessment></Assessment>
-                    
-                </Task>
-            </Course>
-            <Course id="5">
-                <CourceName>Язык XSLT и XPath</CourceName>
-                <CourceAuthor></CourceAuthor>
-                <CourceCreationDate>12.12.2015</CourceCreationDate>
-                <Task hours="14">
-                    <TaskName>Learning XSLT and XPath Basics</TaskName>
-                    <Assessment></Assessment>
-                    
-                </Task>
-                <Task hours="8">
-                    <TaskName>Equipment Stylesheets</TaskName>
-                    <Assessment></Assessment>
-                    
-                </Task>
-            </Course>
+            <Courses>
+                <Course id="4">
+                    <CourceName>Язык XML</CourceName>
+                    <CourceAuthor></CourceAuthor>
+                    <CourceCreationDate>12.12.2015</CourceCreationDate>
+                    <Tasks>
+                        <Task hours="6">
+                            <TaskName>Learning XML Language</TaskName>
+                            <Assessment></Assessment>
+                        </Task>
+                        <Task hours="8">
+                            <TaskName>Practical Task</TaskName>
+                            <Assessment></Assessment>
+                        </Task>
+                    </Tasks>
+                </Course>
+                <Course id="5">
+                    <CourceName>Язык XSLT и XPath</CourceName>
+                    <CourceAuthor></CourceAuthor>
+                    <CourceCreationDate>12.12.2015</CourceCreationDate>
+                    <Tasks>
+                        <Task hours="14">
+                            <TaskName>Learning XSLT and XPath Basics</TaskName>
+                            <Assessment></Assessment>
+
+                        </Task>
+                        <Task hours="8">
+                            <TaskName>Equipment Stylesheets</TaskName>
+                            <Assessment></Assessment>
+                        </Task>
+                    </Tasks>
+                </Course>
+            </Courses>
         </Program>
     </Student>
     <Student>
@@ -341,73 +320,85 @@
         <City></City>
         <Email>IvanFedorov@gmail.com</Email>
         <TrainingStartDate>12.12.2010</TrainingStartDate>
-        <SignedAcontract></SignedAcontract>
+        <SignedAcontract>false</SignedAcontract>
         <Program>
             <ProgName>Укороченная программа</ProgName>
             <ProgAuthor></ProgAuthor>
             <ProgCreationDate>12.12.2015</ProgCreationDate>
-            <Course id="1">
-                <CourceName>Overview of Eclipse IDE of Eclipse IDE 4</CourceName>
-                <CourceAuthor></CourceAuthor>
-                <CourceCreationDate>12.12.2015</CourceCreationDate>
-                <Task hours="4" >
-                    <TaskName>Overview of Eclipse IDE</TaskName>
-                    <Assessment>3</Assessment>
-                </Task>
-            </Course>
-            <Course id="2">
-                <CourceName>Основы языка Java</CourceName>
-                <CourceAuthor></CourceAuthor>
-                <CourceCreationDate>12.12.2015</CourceCreationDate>
-                <Task hours="12" Practical="задание принято">
-                    <TaskName>Learning the Java Language Basics</TaskName>
-                    <Assessment>3</Assessment>
-                </Task>
-                <Task hours="4" Theory="в процессе изучения">
-                    <TaskName>Practical Task</TaskName>
-                    <Assessment></Assessment>
-                </Task>
-            </Course>
-            <Course id="3">
-                <CourceName>Язык Java - расширенные возможности</CourceName>
-                <CourceAuthor></CourceAuthor>
-                <CourceCreationDate>12.12.2015</CourceCreationDate>
-                <Task hours="17" Practical="находится на проверке">
-                    <TaskName>Learning the Java Language advanced features</TaskName>
-                    <Assessment>3</Assessment>
-                    
-                </Task>
-                <Task hours="16" Theory="изучение завершено">
-                    <TaskName>Practical Task</TaskName>
-                    <Assessment>4</Assessment>
-                </Task>
-            </Course>
-            <Course id="7">
-                <CourceName>Процесс производства программного обеспечения</CourceName>
-                <CourceAuthor></CourceAuthor>
-                <CourceCreationDate>12.12.2015</CourceCreationDate>
-                <Task hours="3">
-                    <TaskName>Mastering Microsoft Project</TaskName>
-                    <Assessment>5</Assessment>
-                </Task>
-                <Task hours="8" Practical="задание принято">
-                    <TaskName>MS Project Practical Task</TaskName>
-                    <Assessment>3</Assessment>
-                </Task>
-                <Task hours="12" Theory="изучение не началось">
-                    <TaskName>Software development process. Development team and its structure</TaskName>
-                    <Assessment>3</Assessment>
-                </Task>
-            </Course>
-            <Course id="8">
-                <CourceName>Процесс разработки программного обеспечения</CourceName>
-                <CourceAuthor></CourceAuthor>
-                <CourceCreationDate>12.12.2015</CourceCreationDate>
-                <Task hours="80" Practical="задание принято">
-                    <TaskName>Software development process. Development team and its structure</TaskName>
-                    <Assessment>3</Assessment>
-                </Task>
-            </Course>
+            <Courses>
+                <Course id="1">
+                    <CourceName>Overview of Eclipse IDE of Eclipse IDE 4</CourceName>
+                    <CourceAuthor></CourceAuthor>
+                    <CourceCreationDate>12.12.2015</CourceCreationDate>
+                    <Tasks>
+                        <Task hours="4">
+                            <TaskName>Overview of Eclipse IDE</TaskName>
+                            <Assessment>3</Assessment>
+                        </Task>
+                    </Tasks>
+                </Course>
+                <Course id="2">
+                    <CourceName>Основы языка Java</CourceName>
+                    <CourceAuthor></CourceAuthor>
+                    <CourceCreationDate>12.12.2015</CourceCreationDate>
+                    <Tasks>
+                        <Task hours="12" Practical="задание принято">
+                            <TaskName>Learning the Java Language Basics</TaskName>
+                            <Assessment>3</Assessment>
+                        </Task>
+                        <Task hours="4" Theory="в процессе изучения">
+                            <TaskName>Practical Task</TaskName>
+                            <Assessment></Assessment>
+                        </Task>
+                    </Tasks>
+                </Course>
+                <Course id="3">
+                    <CourceName>Язык Java - расширенные возможности</CourceName>
+                    <CourceAuthor></CourceAuthor>
+                    <CourceCreationDate>12.12.2015</CourceCreationDate>
+                    <Tasks>
+                        <Task hours="17" Practical="находится на проверке">
+                            <TaskName>Learning the Java Language advanced features</TaskName>
+                            <Assessment>3</Assessment>
+
+                        </Task>
+                        <Task hours="16" Theory="изучение завершено">
+                            <TaskName>Practical Task</TaskName>
+                            <Assessment>4</Assessment>
+                        </Task>
+                    </Tasks>
+                </Course>
+                <Course id="7">
+                    <CourceName>Процесс производства программного обеспечения</CourceName>
+                    <CourceAuthor></CourceAuthor>
+                    <CourceCreationDate>12.12.2015</CourceCreationDate>
+                    <Tasks>
+                        <Task hours="3">
+                            <TaskName>Mastering Microsoft Project</TaskName>
+                            <Assessment>5</Assessment>
+                        </Task>
+                        <Task hours="8" Theory="в процессе изучения">
+                            <TaskName>MS Project Practical Task</TaskName>
+                            <Assessment>3</Assessment>
+                        </Task>
+                        <Task hours="12" Theory="изучение не началось">
+                            <TaskName>Software development process. Development team and its structure</TaskName>
+                            <Assessment>3</Assessment>
+                        </Task>
+                    </Tasks>
+                </Course>
+                <Course id="8">
+                    <CourceName>Процесс разработки программного обеспечения</CourceName>
+                    <CourceAuthor></CourceAuthor>
+                    <CourceCreationDate>12.12.2015</CourceCreationDate>
+                    <Tasks>
+                        <Task hours="80" Practical="задание принято">
+                            <TaskName>Software development process. Development team and its structure</TaskName>
+                            <Assessment>3</Assessment>
+                        </Task>
+                    </Tasks>
+                </Course>
+            </Courses>
         </Program>
     </Student>
 
