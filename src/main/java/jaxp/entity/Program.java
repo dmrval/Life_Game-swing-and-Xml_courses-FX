@@ -2,7 +2,7 @@ package jaxp.entity;
 
 import java.util.List;
 
-public class Program {
+public class Program implements StringForTreeView {
     String progName;
     String progAuthor;
     String creationDate;
@@ -42,12 +42,20 @@ public class Program {
 
     @Override
     public String toString() {
-        return "\t" + "Program{" +
-                "progName='" + progName + '\'' +
-                ", progAuthor='" + progAuthor + '\'' +
-                ", creationDate='" + creationDate + '\'' +
-                ", courseList=" + courseList +
-                '}';
+        return progName;
     }
 
+    @Override
+    public String treeViewtoString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Programm: ");
+        stringBuilder.append(progName);
+        stringBuilder.append("\n");
+        stringBuilder.append("Programm Author: ");
+        stringBuilder.append(progAuthor);
+        stringBuilder.append("\n");
+        stringBuilder.append("Creation Date: ");
+        stringBuilder.append(creationDate);
+        return stringBuilder.toString();
+    }
 }

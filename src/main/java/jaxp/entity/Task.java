@@ -1,6 +1,6 @@
 package jaxp.entity;
 
-public class Task {
+public class Task implements StringForTreeView {
     String taskName;
     int assessment;
     int hourse;
@@ -50,4 +50,33 @@ public class Task {
     }
 
 
+    @Override
+    public String toString() {
+        return taskName;
+    }
+
+    @Override
+    public String treeViewtoString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Name: ");
+        stringBuilder.append(taskName);
+        stringBuilder.append("\n");
+        stringBuilder.append("Assessment: ");
+        stringBuilder.append(assessment);
+        stringBuilder.append("\n");
+        stringBuilder.append("Hourse: ");
+        stringBuilder.append(hourse);
+        stringBuilder.append("\n");
+        stringBuilder.append("\n");
+        stringBuilder.append("\n");
+        stringBuilder.append("\n");
+        if (typeTask!= null ) {
+            stringBuilder.append("Task type: ");
+            stringBuilder.append(typeTask.type);
+            stringBuilder.append("\n");
+            stringBuilder.append("Task description: ");
+            stringBuilder.append(typeTask.description);
+        }
+        return stringBuilder.toString();
+    }
 }

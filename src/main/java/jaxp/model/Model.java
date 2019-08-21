@@ -11,17 +11,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Model {
-    final String XMLPATH =
-            "C:\\Users\\Damir_Valeev\\IdeaProjects\\lifeProject\\src\\main\\xmlTask\\StudentReport.xml";
-    University univer;
 
-    public University startModel() {
-        Node node = load(XMLPATH);
+    public University startModel(String path) {
+        Node node = load(path);
+        if (node == null) {
+            University tmp = new University();
+            return tmp;
+        }
+
         NodeImpl universityNodeList = (NodeImpl) node.getChildNodes();
         NodeList studentsNodes = universityNodeList.item(0).getChildNodes();
         University university = new University();
         university.setStudentList(parseStudents(studentsNodes));
-        univer = university;
         return university;
     }
 
@@ -51,7 +52,6 @@ public class Model {
                         if (studentNode.item(j).getNodeName().equals("Program")) {
                             student.setProgram(parseProgram(studentNode.item(j).getChildNodes()));
                         }
-
                     }
                 }
                 studentList.add(student);
@@ -115,7 +115,6 @@ public class Model {
         return course;
     }
 
-
     private static List<Task> parseTaskList(NodeList childNodes) {
         List<Task> taskArrayList = new ArrayList<Task>();
         for (int j = 0; j < childNodes.getLength(); j++) {
@@ -159,6 +158,9 @@ public class Model {
             parser.reset();
             parser.parse(xmlfile);
             doc = parser.getDocument();
+            if (!doc.getDocumentElement().getTagName().equals("University")) {
+                return null;
+            }
         } catch (IOException ioe) {
             ioe.printStackTrace();
         } catch (SAXException saxe) {
@@ -167,7 +169,5 @@ public class Model {
         return doc;
     }
 
-    public University getUniver() {
-        return univer;
-    }
+
 }
