@@ -3,49 +3,54 @@ package jaxp.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import jaxp.entity.*;
 import jaxp.model.Model;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
-
+    University university;
     @FXML
     TreeView<?> treeView;
 
     @FXML
     TextArea textArea;
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
-
 
     public void closeApplication(ActionEvent actionEvent) {
         System.exit(0);
     }
 
     public void openFileDialog(ActionEvent actionEvent) {
-//        FileChooser fileChooser = new FileChooser();
-//        fileChooser.setTitle("Open Resource File");
-//        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("XML files (*.xml)", "*.xml");
-//        fileChooser.getExtensionFilters().add(extFilter);
-//        File openfile = fileChooser.showOpenDialog(new Stage());
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("XML files (*.xml)", "*.xml");
+        fileChooser.getExtensionFilters().add(extFilter);
+        File openfile = fileChooser.showOpenDialog(new Stage());
         Model model = new Model();
-//        University university = model.startModel(openfile.getPath());
-        initStudents(model.startModel("C:\\Users\\Damir_Valeev\\IdeaProjects\\lifeProject\\src\\main\\xmlTask\\StudentReport.xml"));
-        textArea.setEditable(false);
-
+        if (model.startModel(openfile.getPath()).getStudentList().size() == 0) {
+            getBadxmlScreen();
+        } else {
+            university = model.startModel(openfile.getPath());
+            initTree(university);
+        }
     }
 
-    private void initStudents(University university) {
+    private void initTree(University university) {
         TreeItem univer = new TreeItem(university);
         treeView.setRoot(univer);
         univer.setExpanded(true);
@@ -66,6 +71,20 @@ public class Controller implements Initializable {
     }
 
     public void setTextOnTextArea(MouseEvent mouseEvent) {
-        textArea.setText(String.valueOf(((StringForTreeView) treeView.getFocusModel().getFocusedItem().getValue()).treeViewtoString()));
+        if (university != null) {
+            textArea.setText(String.valueOf(((StringForTreeView) treeView.getFocusModel().getFocusedItem().getValue()).treeViewtoString()));
+        }
+    }
+
+    private void getBadxmlScreen() {
+        Stage stage = new Stage();
+        stage.setTitle("Bad XML...........");
+        stage.setMaxWidth(300);
+        stage.setMaxHeight(300);
+        VBox vBox = new VBox();
+        Scene tmp = new Scene(vBox);
+        stage.setScene(tmp);
+        stage.setResizable(false);
+        stage.show();
     }
 }

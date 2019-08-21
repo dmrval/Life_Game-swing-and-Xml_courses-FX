@@ -19,6 +19,7 @@ public class WindowFrame extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/ui.fxml"));
         stage.setTitle("FXML Welcome");
         stage.setScene(new Scene(root));
+        stage.setResizable(false);
         stage.show();
     }
 }

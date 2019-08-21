@@ -10,6 +10,7 @@ public class University implements StringForTreeView {
         studentList = new ArrayList<Student>();
     }
 
+
     public void addStudent(Student student) {
         studentList.add(student);
     }

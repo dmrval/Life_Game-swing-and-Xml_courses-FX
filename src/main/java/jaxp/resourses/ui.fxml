@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.effect.*?>
@@ -29,7 +30,7 @@
                 </Menu>
             </menus>
         </MenuBar>
-        <TreeView fx:id="treeView" layoutY="27.0" onMousePressed="#setTextOnTextArea" prefHeight="373.0" prefWidth="315.0">
+        <TreeView fx:id="treeView" layoutX="-6.0" layoutY="27.0" onMousePressed="#setTextOnTextArea" prefHeight="380.0" prefWidth="321.0">
             <effect>
                 <Glow />
             </effect>
@@ -40,6 +41,7 @@
                 <Cursor fx:constant="DEFAULT" />
             </cursor>
         </TreeView>
-        <TextArea fx:id="textArea" layoutX="315.0" layoutY="27.0" prefHeight="373.0" prefWidth="283.0" />
+        <TextArea fx:id="textArea" layoutX="315.0" layoutY="27.0" prefHeight="380.0" prefWidth="291.0" editable="false"/>
+      <Separator layoutX="312.0" layoutY="36.0" orientation="VERTICAL" prefHeight="200.0" />
     </children>
 </AnchorPane>

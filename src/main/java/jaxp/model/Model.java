@@ -14,6 +14,11 @@ public class Model {
 
     public University startModel(String path) {
         Node node = load(path);
+        if (node == null) {
+            University tmp = new University();
+            return tmp;
+        }
+
         NodeImpl universityNodeList = (NodeImpl) node.getChildNodes();
         NodeList studentsNodes = universityNodeList.item(0).getChildNodes();
         University university = new University();
@@ -50,7 +55,6 @@ public class Model {
                     }
                 }
                 studentList.add(student);
-                System.out.println(student);
             }
         }
         return studentList;
@@ -154,6 +158,9 @@ public class Model {
             parser.reset();
             parser.parse(xmlfile);
             doc = parser.getDocument();
+            if (!doc.getDocumentElement().getTagName().equals("University")) {
+                return null;
+            }
         } catch (IOException ioe) {
             ioe.printStackTrace();
         } catch (SAXException saxe) {
