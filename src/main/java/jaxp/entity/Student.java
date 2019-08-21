@@ -1,6 +1,6 @@
 package jaxp.entity;
 
-public class Student {
+public class Student implements StringForTreeView {
     String fullName;
     String city;
     String email;
@@ -56,5 +56,32 @@ public class Student {
         this.program = program;
     }
 
+    @Override
+    public String toString() {
+        return fullName;
+    }
 
+    @Override
+    public String treeViewtoString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Fullname: ");
+        stringBuilder.append(fullName);
+        stringBuilder.append("\n");
+        stringBuilder.append("Region: ");
+        stringBuilder.append(city);
+        stringBuilder.append("\n");
+        stringBuilder.append("Email: ");
+        stringBuilder.append(email);
+        stringBuilder.append("\n");
+        stringBuilder.append("Start Date: ");
+        stringBuilder.append(trainingStartDate);
+        stringBuilder.append("\n");
+        stringBuilder.append("Contract signing: ");
+        if (signedAcontract) {
+            stringBuilder.append("Yes");
+        } else {
+            stringBuilder.append("No");
+        }
+        return stringBuilder.toString();
+    }
 }

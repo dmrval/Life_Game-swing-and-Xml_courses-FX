@@ -1,6 +1,6 @@
 package jaxp.entity;
 
-public class Task {
+public class Task implements StringForTreeView{
     String taskName;
     int assessment;
     int hourse;
@@ -50,4 +50,8 @@ public class Task {
     }
 
 
+    @Override
+    public String treeViewtoString() {
+        return "qwrewqcxzf";
+    }
 }

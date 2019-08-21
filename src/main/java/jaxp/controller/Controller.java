@@ -1,18 +1,71 @@
 package jaxp.controller;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
+import javafx.scene.input.MouseEvent;
+import jaxp.entity.*;
 import jaxp.model.Model;
 
-public class Controller {
-    Model model;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-    public Controller() {
-        model = new Model();
+public class Controller implements Initializable {
+
+    @FXML
+    TreeView<?> treeView;
+
+    @FXML
+    TextArea textArea;
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
     }
 
 
-    public static void main(String[] args) {
-        Controller controller = new Controller();
-        controller.model.startModel();
-        System.out.println(controller.model.getUniver().getStudentList());
+    public void closeApplication(ActionEvent actionEvent) {
+        System.exit(0);
+    }
+
+    public void openFileDialog(ActionEvent actionEvent) {
+//        FileChooser fileChooser = new FileChooser();
+//        fileChooser.setTitle("Open Resource File");
+//        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("XML files (*.xml)", "*.xml");
+//        fileChooser.getExtensionFilters().add(extFilter);
+//        File openfile = fileChooser.showOpenDialog(new Stage());
+        Model model = new Model();
+//        University university = model.startModel(openfile.getPath());
+        initStudents(model.startModel("C:\\Users\\Damir_Valeev\\IdeaProjects\\lifeProject\\src\\main\\xmlTask\\StudentReport.xml"));
+        textArea.setEditable(false);
+
+    }
+
+    private void initStudents(University university) {
+        TreeItem univer = new TreeItem(university);
+        treeView.setRoot(univer);
+        univer.setExpanded(true);
+        for (Student tmp : university.getStudentList()) {
+            TreeItem studentItem = new TreeItem<Student>(tmp);
+            univer.getChildren().add(studentItem);
+            TreeItem programmItem = new TreeItem<Program>(tmp.getProgram());
+            studentItem.getChildren().add(programmItem);
+            for (int i = 0; i < tmp.getProgram().getCourseList().size(); i++) {
+                TreeItem courseItem = new TreeItem<Course>(tmp.getProgram().getCourseList().get(i));
+                programmItem.getChildren().add(courseItem);
+                for (int j = 0; j < tmp.getProgram().getCourseList().get(i).getTaskList().size(); j++) {
+                    TreeItem taskItem = new TreeItem<Task>(tmp.getProgram().getCourseList().get(i).getTaskList().get(j));
+                    courseItem.getChildren().add(taskItem);
+                }
+            }
+        }
+    }
+
+    public void setTextOnTextArea(MouseEvent mouseEvent) {
+        textArea.setText(String.valueOf(((StringForTreeView) treeView.getFocusModel().getFocusedItem().getValue()).treeViewtoString()));
     }
 }

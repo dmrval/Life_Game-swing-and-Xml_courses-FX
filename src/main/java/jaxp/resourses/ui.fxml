@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jaxp.controller.Controller">
+    <children>
+        <MenuBar layoutY="2.0" prefHeight="23.0" prefWidth="600.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#openFileDialog" text="Import from XML..." />
+                    </items>
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#closeApplication" text="Exit" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <TreeView fx:id="treeView" layoutY="27.0" onMousePressed="#setTextOnTextArea" prefHeight="373.0" prefWidth="315.0">
+            <effect>
+                <Glow />
+            </effect>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <cursor>
+                <Cursor fx:constant="DEFAULT" />
+            </cursor>
+        </TreeView>
+        <TextArea fx:id="textArea" layoutX="315.0" layoutY="27.0" prefHeight="373.0" prefWidth="283.0" />
+    </children>
+</AnchorPane>

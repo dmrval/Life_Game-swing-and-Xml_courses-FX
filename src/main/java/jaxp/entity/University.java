@@ -3,7 +3,7 @@ package jaxp.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class University {
+public class University implements StringForTreeView {
     List<Student> studentList;
 
     public University() {
@@ -20,5 +20,15 @@ public class University {
 
     public void setStudentList(List<Student> studentList) {
         this.studentList = studentList;
+    }
+
+    @Override
+    public String toString() {
+        return "University";
+    }
+
+    @Override
+    public String treeViewtoString() {
+        return "---University---";
     }
 }
