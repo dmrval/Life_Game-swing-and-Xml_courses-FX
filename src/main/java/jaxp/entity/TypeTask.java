@@ -1,8 +1,8 @@
 package jaxp.entity;
 
 public class TypeTask {
-    String type;
-    String description;
+    private String type;
+    private String description;
 
 
     public TypeTask(String theoryType, String practicalType) {
@@ -15,7 +15,7 @@ public class TypeTask {
         }
     }
 
-    public String getType() {
+    String getType() {
         return type;
     }
 
@@ -23,7 +23,7 @@ public class TypeTask {
         this.type = type;
     }
 
-    public String getDescription() {
+    String getDescription() {
         return description;
     }
 

@@ -3,12 +3,14 @@ package jaxp.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import jaxp.entity.*;
@@ -19,6 +21,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
+
     University university;
     @FXML
     TreeView<?> treeView;
@@ -31,11 +34,13 @@ public class Controller implements Initializable {
 
     }
 
-    public void closeApplication(ActionEvent actionEvent) {
+    @FXML
+    private void closeApplication(ActionEvent actionEvent) {
         System.exit(0);
     }
 
-    public void openFileDialog(ActionEvent actionEvent) {
+    @FXML
+    private void openFileDialog(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("XML files (*.xml)", "*.xml");
@@ -70,21 +75,28 @@ public class Controller implements Initializable {
         }
     }
 
-    public void setTextOnTextArea(MouseEvent mouseEvent) {
+    @FXML
+    private void setTextOnTextArea(MouseEvent mouseEvent) {
         if (university != null) {
-            textArea.setText(String.valueOf(((StringForTreeView) treeView.getFocusModel().getFocusedItem().getValue()).treeViewtoString()));
+            String current = String.valueOf(
+                    ((StringForTreeView) treeView.getFocusModel().getFocusedItem().getValue()).treeViewtoString()
+            );
+            textArea.setText(current);
         }
     }
 
     private void getBadxmlScreen() {
         Stage stage = new Stage();
+        stage.setMaxWidth(500);
+        stage.setMaxHeight(500);
+        Image image = new Image("/bad.jpg");
+        stage.getIcons().add(image);
+        ImageView imageView = new ImageView(image);
+        imageView.setPreserveRatio(true);
+        Group root = new Group(imageView);
+        Scene scene = new Scene(root, 600, 500);
         stage.setTitle("Bad XML...........");
-        stage.setMaxWidth(300);
-        stage.setMaxHeight(300);
-        VBox vBox = new VBox();
-        Scene tmp = new Scene(vBox);
-        stage.setScene(tmp);
-        stage.setResizable(false);
+        stage.setScene(scene);
         stage.show();
     }
 }

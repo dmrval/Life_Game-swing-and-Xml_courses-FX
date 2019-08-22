@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class University implements StringForTreeView {
-    List<Student> studentList;
+    private List<Student> studentList;
 
     public University() {
         studentList = new ArrayList<Student>();

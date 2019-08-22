@@ -151,7 +151,7 @@
                     <CourceAuthor></CourceAuthor>
                     <CourceCreationDate>12.12.2015</CourceCreationDate>
                     <Tasks>
-                        <Task hours="4">
+                        <Task hours="4" Theory="в процессе изучения">
                             <TaskName>Overview of Eclipse IDE</TaskName>
                             <Assessment>4</Assessment>
                         </Task>

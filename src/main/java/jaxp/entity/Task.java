@@ -1,10 +1,10 @@
 package jaxp.entity;
 
 public class Task implements StringForTreeView {
-    String taskName;
-    int assessment;
-    int hourse;
-    TypeTask typeTask;
+    private String taskName;
+    private int assessment;
+    private int hourse;
+    private TypeTask typeTask;
 
 
     public Task() {
@@ -72,10 +72,10 @@ public class Task implements StringForTreeView {
         stringBuilder.append("\n");
         if (typeTask!= null ) {
             stringBuilder.append("Task type: ");
-            stringBuilder.append(typeTask.type);
+            stringBuilder.append(typeTask.getType());
             stringBuilder.append("\n");
             stringBuilder.append("Task description: ");
-            stringBuilder.append(typeTask.description);
+            stringBuilder.append(typeTask.getDescription());
         }
         return stringBuilder.toString();
     }

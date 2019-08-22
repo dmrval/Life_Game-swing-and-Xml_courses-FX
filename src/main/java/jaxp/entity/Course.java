@@ -3,10 +3,10 @@ package jaxp.entity;
 import java.util.List;
 
 public class Course implements StringForTreeView {
-    String courceName;
-    String courceAuthor;
-    String courceCreationDate;
-    List<Task> taskList;
+    private String courceName;
+    private String courceAuthor;
+    private String courceCreationDate;
+    private List<Task> taskList;
     int id;
 
     public int getId() {

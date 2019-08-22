@@ -1,12 +1,12 @@
 package jaxp.entity;
 
 public class Student implements StringForTreeView {
-    String fullName;
-    String city;
-    String email;
-    String trainingStartDate;
-    boolean signedAcontract;
-    Program program;
+    private String fullName;
+    private String city;
+    private String email;
+    private String trainingStartDate;
+    private boolean signedAcontract;
+    private Program program;
 
     public String getFullName() {
         return fullName;

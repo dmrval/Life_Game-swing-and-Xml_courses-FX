@@ -16,32 +16,36 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jaxp.controller.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="jaxp.controller.Controller">
     <children>
         <MenuBar layoutY="2.0" prefHeight="23.0" prefWidth="600.0">
             <menus>
                 <Menu mnemonicParsing="false" text="File">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#openFileDialog" text="Import from XML..." />
+                        <MenuItem mnemonicParsing="false" onAction="#openFileDialog" text="Import from XML..."/>
                     </items>
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#closeApplication" text="Exit" />
+                        <MenuItem mnemonicParsing="false" onAction="#closeApplication" text="Exit"/>
                     </items>
                 </Menu>
             </menus>
         </MenuBar>
-        <TreeView fx:id="treeView" layoutX="-6.0" layoutY="27.0" onMousePressed="#setTextOnTextArea" prefHeight="380.0" prefWidth="321.0">
+        <TreeView fx:id="treeView" layoutX="-6.0" layoutY="27.0" onMousePressed="#setTextOnTextArea" prefHeight="380.0"
+                  prefWidth="321.0">
             <effect>
-                <Glow />
+                <Glow/>
             </effect>
             <opaqueInsets>
-                <Insets />
+                <Insets/>
             </opaqueInsets>
             <cursor>
-                <Cursor fx:constant="DEFAULT" />
+                <Cursor fx:constant="DEFAULT"/>
             </cursor>
         </TreeView>
-        <TextArea fx:id="textArea" layoutX="315.0" layoutY="27.0" prefHeight="380.0" prefWidth="291.0" editable="false"/>
-      <Separator layoutX="312.0" layoutY="36.0" orientation="VERTICAL" prefHeight="200.0" />
+        <TextArea fx:id="textArea" layoutX="315.0" layoutY="27.0" prefHeight="380.0" prefWidth="291.0"
+                  editable="false"/>
+        <Separator layoutX="312.0" layoutY="36.0" orientation="VERTICAL" prefHeight="200.0"/>
     </children>
 </AnchorPane>
